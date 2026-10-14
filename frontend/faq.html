@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions (FAQs) | NyaySetu</title>
+    <meta name="description" content="Answers to common questions about using NyaySetu, finding free legal aid, generating legal notices, and handling emergency situations.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/panels.css">
+    <style>
+        :root {
+            --bg-color: #FAF8F4;
+            --card-bg: #FFFFFF;
+            --primary-accent: #61212B;
+            --primary-hover: #4A1525;
+            --btn-cream: #EBDAC2;
+            --text-primary: #2C2A29;
+            --text-secondary: #7A7571;
+            --border-color: #E5E0D8;
+            --footer-bg: #291E1E;
+            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --border-radius-card: 6px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        .navbar {
+            position: sticky; top: 0; background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color); z-index: 1000; padding: 0;
+        }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 90px; max-width: 1200px; }
+        .navbar-left, .navbar-right { display: flex; align-items: center; height: 100%; gap: 1.5rem; }
+        .logo { height: 60px; width: auto; }
+        
+        .nav-links { display: none; }
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+            .nav-links a {
+                text-transform: uppercase; font-size: 0.85rem; font-weight: 600;
+                color: var(--text-secondary); text-decoration: none;
+            }
+            .nav-links a:hover, .nav-links a.active { color: var(--primary-accent); }
+        }
+
+        .lang-toggle { display: flex; border: 1px solid var(--primary-accent); border-radius: 2px; overflow: hidden; height: 38px; }
+        .lang-toggle button { padding: 0 1rem; font-size: 0.85rem; font-weight: 600; border: none; background: transparent; cursor: pointer; }
+        .lang-toggle .active { background-color: var(--primary-accent); color: white; }
+        .lang-toggle .inactive { color: var(--primary-accent); }
+
+        .btn-emergency {
+            background-color: var(--primary-accent); color: white; padding: 0 1.25rem; height: 38px;
+            border-radius: 2px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            display: flex; align-items: center; gap: 0.5rem; cursor: pointer; border: none;
+        }
+
+        .btn-menu {
+            display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; color: var(--text-primary); cursor: pointer; border: none; background: none;
+        }
+        .hamburger-icon { display: flex; flex-direction: column; gap: 5px; }
+        .hamburger-icon span { width: 22px; height: 1.5px; background-color: var(--text-primary); }
+
+        .hero-mini {
+            padding: 4rem 24px 2rem; text-align: center; background-color: rgba(97, 33, 43, 0.03);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-mini h1 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-accent); margin-bottom: 0.5rem; }
+
+        .faq-list { margin: 3rem 0; display: flex; flex-direction: column; gap: 16px; }
+
+        .faq-item {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-card);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%; padding: 1.25rem 1.5rem; background: none; border: none; font-size: 1.05rem; font-weight: 600;
+            text-align: left; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-question svg { transition: transform 0.3s ease; flex-shrink: 0; }
+        .faq-item.active .faq-question svg { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 1.5rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px; padding: 0 1.5rem 1.5rem 1.5rem; border-top: 1px solid var(--border-color);
+        }
+
+        .floating-emergency {
+            position: fixed; bottom: 30px; left: 30px; background-color: var(--primary-accent);
+            color: white; padding: 0.85rem 1.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            z-index: 1000; border: none; cursor: pointer;
+        }
+
+        footer { background: var(--footer-bg); color: #D5CCC9; padding: 3rem 0; margin-top: 4rem; font-size: 0.88rem; }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="logo"></a>
+                <div class="nav-links">
+                    <a href="explore.html">Explore Issues</a>
+                    <a href="index.html">Guide</a>
+                    <a href="directory.html">Directory</a>
+                    <a href="news.html">News</a>
+                    <a href="faq.html" class="active">FAQs</a>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <div class="lang-toggle">
+                    <button class="active">EN</button>
+                    <button class="inactive">हिं</button>
+                </div>
+                <button class="btn-emergency">EMERGENCY</button>
+                <button class="btn-menu" id="mobileMenuBtn">
+                    <div class="hamburger-icon"><span></span><span></span><span></span></div>
+                    MENU
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-mini">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Get quick answers to common questions regarding your legal rights and NyaySetu tools.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="faq-list">
+            <div class="faq-item active">
+                <button class="faq-question">
+                    Is NyaySetu a replacement for a lawyer?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="faq-answer">
+                    No. NyaySetu provides legal information, plain-language rights awareness, and emergency guidance. It does not provide legal advice or replace qualified advocates. In formal court matters, please consult a registered advocate or legal aid counsel.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Who is eligible for Free Legal Aid under NALSA?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="faq-answer">
+                    Under Section 12 of the Legal Services Authorities Act 1987, women, children, SC/ST members, industrial workmen, victims of human trafficking, persons with disabilities, and citizens with annual income below specified state limits are entitled to free legal aid.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What should I do immediately if money is stolen in a cyber scam?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="faq-answer">
+                    Call 1930 Cyber Crime Helpline immediately within the 'Golden Hour'. Inform your bank to block transactions, freeze the fraud account, and file a formal online complaint at cybercrime.gov.in.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How does the Emergency Panel SOS button work?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="faq-answer">
+                    The SOS button uses your browser's Geolocation API to fetch coordinates, generates a Google Maps link, and allows you to share an immediate WhatsApp or SMS emergency message to your saved trusted contacts.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can police refuse to file my FIR?
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="faq-answer">
+                    No, refusing to file an FIR in a cognizable offence is illegal. If police refuse, you can demand a Zero FIR, send a registered complaint to the Superintendent of Police (SP), or approach the Judicial Magistrate under Sec 156(3) CrPC.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button class="floating-emergency">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        Emergency
+    </button>
+
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>© 2026 NyaySetu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+    <script src="assets/emergency.js"></script>
+    <script src="assets/menu.js"></script>
+</body>
+
+</html>

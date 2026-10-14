@@ -1,0 +1,2579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Rights | NyayMitra</title>
+    <meta name="description"
+        content="Plain-language articles on your rights, legal processes, and how to protect yourself.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-accent);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-hover);
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-accent) var(--bg-color);
+        }
+
+        /* CSS Variables / Light Theme */
+        :root {
+            --bg-color: #FAF8F4;
+            --card-bg: #FFFFFF;
+            --primary-accent: #61212B;
+            /* Burgundy */
+            --primary-hover: #4A1525;
+            --secondary-bg: #4F2027;
+            /* Darker Burgundy for Newsletter */
+            --btn-cream: #EBDAC2;
+            /* Cream/Gold button */
+            --text-primary: #2C2A29;
+            --text-secondary: #7A7571;
+            --border-color: #E5E0D8;
+            --footer-bg: #291E1E;
+            --footer-text: #D5CCC9;
+            --footer-heading: #9B8B88;
+
+            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+
+            --border-radius-sm: 4px;
+            --border-radius-card: 6px;
+            --border-radius-pill: 999px;
+            --transition-speed: 0.3s;
+        }
+
+        /* Basic Reset */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        select,
+        input {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+            outline: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+        }
+
+        .navbar-left,
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .navbar-left {
+            gap: 2rem;
+        }
+
+        .navbar-right {
+            gap: 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-actions {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+                height: 100%;
+                align-items: center;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: var(--text-secondary);
+                padding: 0 0 6px 0;
+                margin: 0 1.1rem;
+                position: relative;
+                transition: color var(--transition-speed);
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: transparent;
+                transition: background-color var(--transition-speed);
+            }
+
+            .nav-links a:hover {
+                color: var(--primary-accent);
+            }
+
+            .nav-links a.active {
+                color: var(--primary-accent);
+            }
+
+            .nav-links a.active::after {
+                background-color: var(--primary-accent);
+            }
+
+            .nav-actions {
+                display: flex;
+            }
+        }
+
+        /* Lang Toggle */
+        .lang-toggle {
+            display: flex;
+            border: 1px solid var(--primary-accent);
+            border-radius: 2px;
+            overflow: hidden;
+            height: 38px;
+        }
+
+        .lang-toggle button {
+            padding: 0 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+        }
+
+        .lang-toggle button:first-child {
+            border-right: 1px solid var(--primary-accent);
+        }
+
+        .lang-toggle .active {
+            background-color: var(--primary-accent);
+            color: white;
+        }
+
+        .lang-toggle .inactive {
+            background-color: transparent;
+            color: var(--primary-accent);
+        }
+
+        .lang-toggle .inactive:hover {
+            background-color: rgba(97, 33, 43, 0.05);
+            /* slightly lighter hover effect */
+        }
+
+        /* Nav Buttons */
+        .btn-signin {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color var(--transition-speed);
+        }
+
+        .btn-signin:hover {
+            color: var(--primary-hover);
+        }
+
+        .btn-emergency {
+            background-color: var(--primary-accent);
+            color: white;
+            padding: 0 1.25rem;
+            height: 38px;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-emergency:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            transition: color var(--transition-speed);
+        }
+
+        .btn-menu:hover {
+            color: var(--primary-accent);
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background-color: var(--text-primary);
+            transition: background-color var(--transition-speed);
+        }
+
+        .btn-menu:hover .hamburger-icon span {
+            background-color: var(--primary-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 20px 2rem;
+            position: relative;
+            animation: fadeIn 0.8s ease-out;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            color: var(--primary-accent);
+            font-style: italic;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* Search Box */
+        .search-container {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            padding: 0.4rem 0.4rem 0.4rem 1.8rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+            transition: box-shadow var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+            border-color: #d1cbc1;
+        }
+
+        .search-box input {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: #A09B96;
+        }
+
+        .btn-search {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--primary-accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .btn-search:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        /* Filter Pills */
+        .pills-container {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .pills-scroll {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding-bottom: 0;
+        }
+
+        .filter-pill {
+            background-color: transparent;
+            border: 1px solid #d1cbc1;
+            color: var(--text-secondary);
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--border-radius-pill);
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all var(--transition-speed);
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+            background-color: rgba(97, 33, 43, 0.02);
+        }
+
+        /* Hero Actions */
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn-large {
+            padding: 1.1rem 2rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-accent);
+            color: white;
+            border: 1px solid var(--primary-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-accent);
+            border: 1px solid var(--primary-accent);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(97, 33, 43, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Articles Grid */
+        .articles-section {
+            padding-bottom: 4rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .articles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Common Card Styles */
+        .article-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-card);
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .article-card.animate-up {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow var(--transition-speed);
+        }
+
+        .article-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px) !important;
+        }
+
+        .article-card-content {
+            padding: 32px 28px;
+            flex-grow: 1;
+        }
+
+        .article-meta {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .article-category {
+            color: var(--primary-accent);
+        }
+
+        .article-time {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .article-time::before {
+            content: "•";
+            margin: 0 8px;
+            color: var(--border-color);
+        }
+
+        .article-title {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .article-summary {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .article-card-footer {
+            border-top: 1px solid var(--border-color);
+            padding: 20px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .article-arrow {
+            color: var(--text-secondary);
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .article-card:hover .article-arrow {
+            color: var(--primary-accent);
+            transform: translateX(4px);
+        }
+
+        /* Grid Specific Title Sizes */
+        .articles-grid .article-title {
+            font-size: 1.25rem;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            margin-bottom: 24px;
+        }
+
+        .featured-article .article-card {
+            grid-column: 1 / -1;
+        }
+
+        .featured-article .article-title {
+            font-size: 2rem;
+            max-width: 800px;
+        }
+
+        .featured-article .article-summary {
+            font-size: 1.05rem;
+            max-width: 800px;
+        }
+
+        .featured-read-btn {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .featured-read-btn svg {
+            stroke-width: 2.5;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Load More Button */
+        .load-more-section {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .btn-load-more {
+            background-color: transparent;
+            border: 1px solid var(--primary-accent);
+            color: var(--primary-accent);
+            padding: 0.85rem 2rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-load-more:hover {
+            background-color: var(--primary-accent);
+            color: white;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: var(--secondary-bg);
+            padding: 5rem 20px;
+            text-align: center;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            /* Subtle separator from footer */
+        }
+
+        .newsletter-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #FAF4EB;
+        }
+
+        .newsletter-section p {
+            color: rgba(250, 244, 235, 0.8);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-direction: column;
+        }
+
+        @media (min-width: 600px) {
+            .newsletter-form {
+                flex-direction: row;
+            }
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 1rem 1.25rem;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            font-size: 0.95rem;
+            background-color: white;
+            color: var(--text-primary);
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .btn-subscribe {
+            background-color: var(--btn-cream);
+            color: var(--text-primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .btn-subscribe:hover {
+            background-color: #DBC3A4;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--footer-bg);
+            padding: 5rem 0 2rem;
+            color: var(--footer-text);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+        }
+
+        .footer-col h3 {
+            color: var(--footer-heading);
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity var(--transition-speed), color var(--transition-speed);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            opacity: 0.6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        /* Explore Section Styles */
+        .explore-header {
+            text-align: center;
+            padding: 5rem 20px 3rem;
+        }
+
+        .explore-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .explore-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+            padding-bottom: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .explore-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .explore-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .explore-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-card);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .explore-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .explore-card-icon {
+            color: var(--primary-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .explore-card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 1.5;
+        }
+
+        .explore-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .explore-card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .common-issues-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .explore-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .explore-card ul li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .explore-card ul li::before {
+            content: "•";
+            color: var(--border-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .explore-card-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+        }
+
+        .explore-card-footer svg {
+            color: var(--text-secondary);
+            transition: transform var(--transition-speed), color var(--transition-speed);
+        }
+
+        .explore-card:hover .explore-card-footer svg {
+            transform: translateX(4px);
+            color: var(--primary-accent);
+        }
+
+        /* AI Prompt Section */
+        .ai-prompt-section {
+            text-align: center;
+            padding: 4rem 20px 6rem;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+        }
+
+        .ai-prompt-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-prompt-section p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-ai-prompt {
+            background-color: var(--secondary-bg);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-ai-prompt:hover {
+            background-color: #3b171c;
+            transform: translateY(-2px);
+        }
+
+
+        /* Dashboard Layout Styles */
+        .dashboard-layout {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .sidebar {
+            width: 320px;
+            background-color: #FFFFFF;
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 0;
+            min-height: calc(100vh - 90px);
+            flex-shrink: 0;
+        }
+
+        .sidebar-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px;
+            font-size: 1.1rem;
+            font-family: var(--font-heading);
+            color: var(--primary-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 1.25rem 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(229, 224, 216, 0.4);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .sidebar-item:hover {
+            background-color: rgba(97, 33, 43, 0.02);
+        }
+
+        .sidebar-item.active {
+            background-color: #EBDAC2;
+            border-left: 4px solid var(--primary-accent);
+            color: var(--text-primary);
+        }
+
+        .sidebar-item-icon {
+            margin-top: 2px;
+            width: 20px;
+            height: 20px;
+            stroke-width: 1.5;
+        }
+
+        .sidebar-item.active .sidebar-item-icon {
+            color: var(--primary-accent);
+        }
+
+        .sidebar-item-titles {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar-item-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .sidebar-item-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #9B8B88;
+        }
+
+        .sidebar-item.active .sidebar-item-sub {
+            color: var(--primary-hover);
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 4rem 4rem 6rem;
+            max-width: 900px;
+        }
+
+        .issue-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 4vw, 4.5rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .issue-header p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .tabs-container {
+            margin-bottom: 3rem;
+        }
+
+        .tabs-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #A09B96;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tabs-row {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+
+        .tabs-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-card {
+            min-width: 180px;
+            padding: 24px;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .tab-card.active {
+            background-color: #4B1E28;
+            color: white;
+        }
+
+        .tab-card.inactive {
+            background-color: transparent;
+            color: #A09B96;
+        }
+
+        .tab-card-title {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .tab-card-action {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .legal-grounding {
+            background-color: #F1F6F2;
+            border: 1px solid #D7E8DA;
+            border-radius: var(--border-radius-sm);
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legal-grounding-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .legal-grounding-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #557859;
+            color: white;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .legal-grounding-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: #2F4131;
+            margin-bottom: 4px;
+        }
+
+        .legal-grounding-sub {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #466348;
+        }
+
+        .legal-verified-chip {
+            background-color: white;
+            border: 1px solid #D7E8DA;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #466348;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legal-verified-chip::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #557859;
+        }
+
+        .law-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .law-section-title span {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .law-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 600px) {
+            .law-cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .law-card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .law-card svg {
+            color: var(--primary-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .law-card p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .show-original-btn {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 4rem;
+        }
+
+        .action-plan-container {
+            background-color: #4B1E28;
+            border-radius: var(--border-radius-sm);
+            color: white;
+            padding: 3rem 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .action-plan-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .action-plan-header svg {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 35px;
+            top: 20px;
+            bottom: 20px;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            align-items: flex-start;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #2D1117;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            padding-top: 4px;
+        }
+
+        .timeline-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .timeline-content .action-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #EBDAC2;
+        }
+
+        .action-warning {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .action-warning svg {
+            color: rgba(255, 255, 255, 0.6);
+            flex-shrink: 0;
+        }
+
+        .action-warning p {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .action-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-value.medium {
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+
+        .stat-sub {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 10px;
+        }
+
+        .ai-lawyer-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-sm);
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ai-lawyer-text h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .ai-lawyer-text p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 400px;
+            line-height: 1.5;
+        }
+
+        .ai-lawyer-btn {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-buttons-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-solid {
+            background-color: #EBDAC2;
+            color: #2D1117;
+            padding: 12px 20px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-solid::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #200B0F;
+        }
+
+        .btn-border {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .btn-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-left: 1rem;
+        }
+
+        .evidence-section-title {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .evidence-card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            padding: 32px;
+            min-height: 200px;
+            /* Placeholder */
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                min-height: auto;
+            }
+
+            .action-plan-container {
+                padding: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 20px 4rem;
+            }
+
+            .action-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-lawyer-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transition: transform var(--transition-speed), background-color var(--transition-speed);
+        }
+
+        .floating-btn.small {
+            width: 45px;
+            height: 45px;
+            align-self: center;
+            background-color: var(--primary-accent);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .floating-btn.small.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.08);
+            background-color: var(--primary-hover);
+        }
+
+        .floating-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .floating-btn.small svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .floating-emergency {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--primary-accent);
+            color: white;
+            padding: 0.85rem 1.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform var(--transition-speed), background-color var(--transition-speed);
+        }
+
+        .floating-emergency:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-hover);
+        }
+
+        /* ANTIGRAVITY EFFECTS */
+
+
+        /* General button antigravity */
+        button,
+        a.btn-primary,
+        a.btn-outline,
+        a.btn-load-more,
+        a.btn-emergency,
+        a.btn-signin,
+        .floating-btn,
+        .filter-pill,
+        .btn-search,
+        .btn-subscribe,
+        .lang-toggle button,
+        .hero-actions a,
+        .featured-read-btn {
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        button:hover,
+        a.btn-primary:hover,
+        a.btn-outline:hover,
+        a.btn-load-more:hover,
+        a.btn-emergency:hover,
+        a.btn-signin:hover,
+        .floating-btn:hover,
+        .filter-pill:hover,
+        .btn-search:hover,
+        .btn-subscribe:hover,
+        .lang-toggle button:hover,
+        .hero-actions a:hover,
+        .featured-read-btn:hover {
+            transform: translateY(-6px) scale(1.04) !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        button:active,
+        a.btn-primary:active,
+        a.btn-outline:active,
+        a.btn-load-more:active,
+        a.btn-emergency:active,
+        a.btn-signin:active,
+        .floating-btn:active,
+        .filter-pill:active,
+        .btn-search:active,
+        .btn-subscribe:active,
+        .lang-toggle button:active,
+        .hero-actions a:active,
+        .featured-read-btn:active {
+            transform: translateY(2px) scale(0.97) !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        /* Floating entrance container definitions */
+        .antigravity-float {
+            opacity: 0 !important;
+            transform: translateY(30px) !important;
+            will-change: transform, opacity;
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        .antigravity-float-active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Ripple animation */
+        .ag-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--primary-accent, #61212B);
+            transform: scale(0);
+            animation: ripple-effect 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            pointer-events: none;
+            opacity: 0.4;
+            z-index: 10;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Touch friendly minimum tap sizes */
+        @media (max-pointer: coarse) {
+
+            button,
+            a.btn-primary,
+            a.btn-outline,
+            a.btn-load-more,
+            a.btn-emergency,
+            a.btn-signin,
+            .floating-btn,
+            .filter-pill,
+            .btn-search,
+            .btn-subscribe,
+            .nav-links a {
+                min-height: 44px !important;
+                min-width: 44px !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="assets/panels.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <div class="logo-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                        alt="Emblem of India" class="logo">
+                </div>
+
+                <div class="nav-links">
+                    <a href="explore.html" class="active">Explore Issues</a>
+                    <a href="index.html">Guide</a>
+                    <a href="directory.html">Directory</a>
+                    <a href="news.html">News</a>
+                    <a href="#">RTI Generator</a>
+                    <a href="#">AI Analysis</a>
+                </div>
+            </div>
+
+            <div class="navbar-right">
+                <div class="nav-actions">
+                    <div class="lang-toggle">
+                        <button class="active">EN</button>
+                        <button class="inactive">हिं</button>
+                    </div>
+                    <button class="btn-signin" onclick="window.location.href='signin.html'">SIGN IN</button>
+                    <button class="btn-emergency">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        EMERGENCY
+                    </button>
+                </div>
+
+                <button class="btn-menu" id="mobileMenuBtn">
+                    <div class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    MENU
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                Your Situation
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-item active">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Consumer Rights</span>
+                        <span class="sidebar-item-sub">DEFECTIVE PRODUCT? REFUND DENIED?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Workplace & Employment</span>
+                        <span class="sidebar-item-sub">SALARY UNPAID? WRONGFUL TERMINATION?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <rect x="8" y="11" width="8" height="6" rx="1"></rect>
+                        <path d="M10 11V9a2 2 0 0 1 4 0v2"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Police & FIR</span>
+                        <span class="sidebar-item-sub">POLICE REFUSING TO HELP? NEED TO FILE FIR?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Property & Real Estate</span>
+                        <span class="sidebar-item-sub">BUILDER DELAY? FRAUD?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                        </path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Family & Matrimonial</span>
+                        <span class="sidebar-item-sub">DIVORCE? DOMESTIC VIOLENCE?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Cyber Crime & Online Fraud</span>
+                        <span class="sidebar-item-sub">ONLINE SCAM? IDENTITY THEFT?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Medical Negligence</span>
+                        <span class="sidebar-item-sub">WRONG TREATMENT? OVERCHARGING?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                        <line x1="8" y1="6" x2="8" y2="6.01"></line>
+                        <line x1="16" y1="6" x2="16" y2="6.01"></line>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Banking & Financial Fraud</span>
+                        <span class="sidebar-item-sub">LOAN HARASSMENT? UNAUTHORIZED TX?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Government & Public Services</span>
+                        <span class="sidebar-item-sub">PASSPORT DELAY? PENSION NOT RECEIVED?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Education & Student Rights</span>
+                        <span class="sidebar-item-sub">FEE REFUND? ADMISSION FRAUD?</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <svg class="sidebar-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="10" width="20" height="8" rx="2" ry="2"></rect>
+                        <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"></path>
+                    </svg>
+                    <div class="sidebar-item-titles">
+                        <span class="sidebar-item-name">Traffic & Motor Vehicle</span>
+                        <span class="sidebar-item-sub">CHALLAN DISPUTES? ACCIDENT CLAIMS?</span>
+                    </div>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="issue-header">
+                <h1>Consumer Rights</h1>
+                <p>Protect yourself against defective products and fraud.</p>
+            </header>
+
+            <div class="tabs-container">
+                <div class="tabs-label">COMMON ISSUES IN THIS CATEGORY</div>
+                <div class="tabs-row">
+                    <div class="tab-card active">
+                        <div class="tab-card-title">Defective product</div>
+                        <div class="tab-card-action">VIEW DETAILS <svg width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg></div>
+                    </div>
+                    <div class="tab-card inactive">
+                        <div class="tab-card-title">Refund denied</div>
+                        <div class="tab-card-action" style="color: #A09B96;">COMING SOON</div>
+                    </div>
+                    <div class="tab-card inactive">
+                        <div class="tab-card-title">Misleading ads</div>
+                        <div class="tab-card-action" style="color: #A09B96;">COMING SOON</div>
+                    </div>
+                    <div class="tab-card inactive">
+                        <div class="tab-card-title">Service complaint</div>
+                        <div class="tab-card-action" style="color: #A09B96;">COMING SOON</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="legal-grounding">
+                <div class="legal-grounding-left">
+                    <div class="legal-grounding-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="legal-grounding-title">Solid Legal Grounding</div>
+                        <div class="legal-grounding-sub">YOU HAVE STRONG LEGAL RIGHTS IN THIS SITUATION</div>
+                    </div>
+                </div>
+                <div class="legal-verified-chip">
+                    VERIFIED BY AI LAWYER
+                </div>
+            </div>
+
+            <h2 class="law-section-title">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                What the Law Says <span>— In Simple Words</span>
+            </h2>
+
+            <div class="law-cards-grid">
+                <div class="law-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <p>Sellers are legally bound to replace or refund defective goods.</p>
+                </div>
+                <div class="law-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <p>'No Return/Refund' signs DO NOT override your statutory rights.</p>
+                </div>
+                <div class="law-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <p>You can claim compensation for mental agony and legal costs.</p>
+                </div>
+                <div class="law-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <p>E-commerce platforms are jointly liable for seller defaults.</p>
+                </div>
+            </div>
+
+            <button class="show-original-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                SHOW ORIGINAL LAW TEXT
+            </button>
+
+            <!-- Action Plan -->
+            <div class="action-plan-container">
+                <div class="action-plan-header">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Your Action Plan
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h4>Serve a written complaint/Legal Notice to the seller</h4>
+                            <p>(deadline: 15 days to respond)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h4>File an online grievance via INGRAM (National Consumer Helpline)</h4>
+                            <a href="#" class="action-link">NEXT MOVE: START NOW</a>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h4>File a consumer case at District Commission</h4>
+                            <p>No lawyer required for claims under ₹5 Lakh.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-warning">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                        </path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <p>"Consumer courts resolve 80% of defective product cases in favor of the consumer."</p>
+                </div>
+
+                <div class="divider" style="background-color: rgba(255,255,255,0.1); margin: 0 0 3rem 0;"></div>
+
+                <div class="action-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">SUCCESS ODDS</div>
+                        <div class="stat-value">85%</div>
+                        <div class="stat-label" style="color: #EBDAC2; margin-top: 0;">HIGH POTENTIAL</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">TIMELINE</div>
+                        <div class="stat-value medium">3-6 months</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">EST. COST</div>
+                        <div class="stat-value medium">₹0 - ₹200</div>
+                    </div>
+                </div>
+
+                <div class="stat-sub">Based on E-Daakhil resolution statistics (2023)</div>
+
+                <div class="ai-lawyer-box">
+                    <div class="ai-lawyer-text">
+                        <h5>Got a specific question?</h5>
+                        <p>Our AI Lawyer can analyze your specific documents and situation instantly.</p>
+                    </div>
+                    <a href="#" class="ai-lawyer-btn" style="text-decoration: none;">
+                        ASK OUR AI LAWYER
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="action-buttons-row">
+                    <button class="btn-solid">Generate Legal Notice</button>
+                    <button class="btn-border">Consumer Complaint</button>
+                    <a href="#" class="btn-text" style="text-decoration: none;">FIND LOCAL LAWYER →</a>
+                </div>
+
+            </div>
+
+            <!-- Evidence Checklist -->
+            <h2 class="evidence-section-title">Evidence Checklist</h2>
+            <div class="evidence-card">
+                <!-- Placeholder for now as it was cut off -->
+                <p style="color: var(--text-secondary);">Your checklist items will appear here...</p>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Floating Elements -->
+
+
+    <button class="floating-emergency">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+        </svg>
+        Emergency
+    </button>
+
+    <div class="floating-container">
+        <button class="floating-btn small" id="scrollToTopBtn" aria-label="Scroll to top">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+        </button>
+        <button class="floating-btn" aria-label="Open chat">
+            <svg viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" style="padding-right: 2rem;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem"
+                        style="height: 50px; margin-bottom: 1.5rem; opacity: 0.3; filter: invert(1);">
+                    <p>India's first AI-powered Legal First-Response System. Legal aid for every Indian citizen,
+                        simplified.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Get Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Consumer Rights</a></li>
+                        <li><a href="#">Workplace Problems</a></li>
+                        <li><a href="#">Police & FIR Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">RTI Generator</a></li>
+                        <li><a href="#">Find a Lawyer</a></li>
+                        <li><a href="#">Know Your Rights</a></li>
+                        <li><a href="https://nalsa.gov.in" target="_blank" rel="noopener noreferrer">NALSA Website ↗</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <p style="margin-bottom: 2rem;">Built by Mayur Sharma 2026. Empowering citizens through accessible
+                        legal information.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 NyaySetu. All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Language Toggle Smooth Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const langContainer = document.querySelector('.lang-toggle');
+            if (langContainer) {
+                const langBtns = langContainer.querySelectorAll('button');
+                langBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        langBtns.forEach(b => {
+                            b.classList.remove('active');
+                            b.classList.add('inactive');
+                        });
+                        e.target.classList.remove('inactive');
+                        e.target.classList.add('active');
+                    });
+                });
+            }
+        });
+
+        // Article Data
+        const featuredArticleData = {
+            category: "Tenant Rights",
+            readTime: "8 min read",
+            title: "Your Complete Guide to Getting Your Security Deposit Back",
+            summary: "Every year, thousands of tenants lose their deposits unfairly. Here is exactly what the law says and what you should do, step by step.",
+            date: "December 15, 2024"
+        };
+
+        const gridArticlesData = [
+            {
+                category: "Police & FIR",
+                readTime: "6 min",
+                title: "Police Refusing to File Your FIR? Here Are 5 Things You Can Do Right Now",
+                summary: "It is illegal for police to refuse an FIR. If they do, you have powerful legal remedies — most people just don't know about them.",
+                date: "Dec 10, 2024"
+            },
+            {
+                category: "Consumer Rights",
+                readTime: "10 min",
+                title: "How to File a Consumer Complaint Online in 2024 (Complete Process)",
+                summary: "You can now file consumer complaints from your phone in under 10 minutes. No lawyer needed. Here is the exact process with...",
+                date: "Dec 8, 2024"
+            },
+            {
+                category: "Workplace",
+                readTime: "7 min",
+                title: "Fired Without Notice? Your Rights as an Employee in India",
+                summary: "Indian labor law requires employers to follow specific procedures before termination. If they didn’t, you may be entitled to...",
+                date: "Dec 5, 2024"
+            },
+            {
+                category: "Cyber Crime",
+                readTime: "5 min",
+                title: "Lost Money to an Online Scam? Act Within 24 Hours for Best Recovery Chances",
+                summary: "The golden window for recovering money lost to cyber fraud is the first 24 hours. Here is the exact sequence of calls and complaints to file.",
+                date: "Dec 1, 2024"
+            },
+            {
+                category: "Property",
+                readTime: "9 min",
+                title: "Builder Not Giving Possession? How to File a RERA Complaint",
+                summary: "RERA gives homebuyers powerful rights against builder delays. Filing a complaint is free in most states and doesn't require a...",
+                date: "Nov 28, 2024"
+            },
+            {
+                category: "Family Law",
+                readTime: "11 min",
+                title: "Understanding the Protection of Women from Domestic Violence Act",
+                summary: "Domestic violence isn't just physical. The law recognizes emotional, verbal, economic, and sexual abuse. Know what protection is...",
+                date: "Nov 25, 2024"
+            },
+            {
+                category: "RTI & Government",
+                readTime: "7 min",
+                title: "RTI for Beginners: How to Get Information from Any Government Office",
+                summary: "The Right to Information Act is one of the most powerful tools citizens have. Filing one costs Rs. 10 and can expose corruption,...",
+                date: "Nov 20, 2024"
+            },
+            {
+                category: "Financial Fraud",
+                readTime: "6 min",
+                title: "Recovery Agents Threatening You? Know the RBI Rules They Are Breaking",
+                summary: "RBI has strict guidelines on loan recovery. Agents cannot call before 8 AM, threaten you, visit your workplace, or contact your family....",
+                date: "Nov 15, 2024"
+            },
+            {
+                category: "Police & FIR",
+                readTime: "8 min",
+                title: "Bail in India: Types, Process, and Your Constitutional Right",
+                summary: "Bail is the rule, jail is the exception. Understanding bail can mean the difference between freedom and unnecessary detention.",
+                date: "Nov 10, 2024"
+            },
+            {
+                category: "Know Your Rights",
+                readTime: "9 min",
+                title: "How to File a Medical Negligence Complaint Against a Hospital or Doctor",
+                summary: "If a hospital's carelessness caused harm, you have the right to compensation. The process starts with the State Medical Council.",
+                date: "Nov 5, 2024"
+            },
+            {
+                category: "Tenant Rights",
+                readTime: "6 min",
+                title: "Can Your Landlord Evict You? Understanding Legal vs Illegal Eviction",
+                summary: "No landlord can throw you out, change locks, or cut utilities without a court order. If they do, it is a criminal offense.",
+                date: "Oct 30, 2024"
+            }
+        ];
+
+        // Filter pills are hardcoded in HTML for dashboard view
+
+        function renderFeatured() {
+            const container = document.getElementById('featuredArticle');
+            const data = featuredArticleData;
+
+            container.innerHTML = `
+                <div class="article-card">
+                    <div class="article-card-content">
+                        <div class="article-meta">
+                            <span class="article-category">${data.category}</span>
+                            <span class="article-time">${data.readTime}</span>
+                        </div>
+                        <h2 class="article-title">${data.title}</h2>
+                        <p class="article-summary">${data.summary}</p>
+                    </div>
+                    <div class="article-card-footer">
+                        <span class="article-date">${data.date}</span>
+                        <span class="featured-read-btn">
+                            Read Article 
+                            <svg class="article-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('articlesGrid');
+
+            gridArticlesData.forEach((data, index) => {
+                const card = document.createElement('div');
+                card.className = 'article-card';
+                // Stagger columns for cool load effect
+                card.style.transitionDelay = `${(index % 3) * 80}ms`;
+
+                card.innerHTML = `
+                    <div class="article-card-content">
+                        <div class="article-meta">
+                            <span class="article-category">${data.category}</span>
+                            <span class="article-time">${data.readTime}</span>
+                        </div>
+                        <h3 class="article-title">${data.title}</h3>
+                        <p class="article-summary">${data.summary}</p>
+                    </div>
+                    <div class="article-card-footer">
+                        <span class="article-date">${data.date}</span>
+                        <svg class="article-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.article-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Navbar shadow and scroll-to-top button logic
+            const navbar = document.getElementById('navbar');
+            const toTopBtn = document.getElementById('scrollToTopBtn');
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const closeBtn = document.getElementById('drawerCloseBtn');
+            const drawer = document.getElementById('mobileDrawer');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                if (window.scrollY > 300) {
+                    toTopBtn.classList.add('visible');
+                } else {
+                    toTopBtn.classList.remove('visible');
+                }
+            });
+
+            toTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            if (mobileBtn && drawer) {
+                mobileBtn.addEventListener('click', () => {
+                    drawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            if (closeBtn && drawer) {
+                closeBtn.addEventListener('click', () => {
+                    drawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+
+            setTimeout(() => {
+                setupScrollAnimations();
+            }, 50);
+        });
+    </script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Lenis Smooth Scroll Setup
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // ease-out cubic-like curve
+                    direction: 'vertical',
+                    gestureDirection: 'vertical',
+                    smooth: true,
+                    smoothTouch: false,
+                });
+
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+
+                requestAnimationFrame(raf);
+            }
+
+            // 2. Floating Entrance Animations
+            const agObserverOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.1
+            };
+
+            const agObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('antigravity-float-active');
+                        }, entry.target.dataset.agDelay || 0);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, agObserverOptions);
+
+            // Find elements to animate
+            const elementsToFloat = document.querySelectorAll('.article-card, .footer-col, .hero, .search-container, .pills-container, .newsletter-section, .dashboard-card, .main-content > div');
+
+            elementsToFloat.forEach((el, index) => {
+                el.classList.remove('animate-up'); // override old animations
+                el.classList.add('antigravity-float');
+                // Stagger siblings based on order (100ms - 150ms roughly)
+                const staggerDelay = (index % 5) * 120;
+                el.dataset.agDelay = staggerDelay;
+                agObserver.observe(el);
+            });
+
+            // 3. Cursor / Tap Ripple Event Delegation
+            document.body.addEventListener('pointerdown', function (e) {
+                const target = e.target.closest('button, a.btn-primary, a.btn-outline, a.btn-load-more, a.btn-emergency, a.btn-signin, .floating-btn, .filter-pill, .btn-search, .btn-subscribe, .hero-actions a');
+
+                if (target) {
+                    const rect = target.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const size = Math.max(rect.width, rect.height);
+
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ag-ripple');
+
+                    ripple.style.width = `${size}px`;
+                    ripple.style.height = `${size}px`;
+                    ripple.style.left = `${x - size / 2}px`;
+                    ripple.style.top = `${y - size / 2}px`;
+
+                    if (target.classList.contains('btn-primary') || target.classList.contains('btn-search') || target.classList.contains('btn-emergency') || target.classList.contains('floating-btn')) {
+                        ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+                    }
+
+                    const compStyle = window.getComputedStyle(target);
+                    if (compStyle.position === 'static') {
+                        target.style.position = 'relative';
+                    }
+
+                    target.appendChild(ripple);
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 500);
+                }
+            });
+        });
+    </script>
+
+    <script src="assets/emergency.js"></script>
+    <script src="assets/menu.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice Generator | NyaySetu</title>
+    <meta name="description" content="Generate plain-language legal notice drafts for salary non-payment, tenant disputes, consumer grievances, and builder delays.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/panels.css">
+    <style>
+        :root {
+            --bg-color: #FAF8F4;
+            --card-bg: #FFFFFF;
+            --primary-accent: #61212B;
+            --primary-hover: #4A1525;
+            --btn-cream: #EBDAC2;
+            --text-primary: #2C2A29;
+            --text-secondary: #7A7571;
+            --border-color: #E5E0D8;
+            --footer-bg: #291E1E;
+            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --border-radius-card: 6px;
+            --transition-speed: 0.3s;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .navbar {
+            position: sticky; top: 0; background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color); z-index: 1000; padding: 0;
+        }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 90px; }
+        .navbar-left, .navbar-right { display: flex; align-items: center; height: 100%; gap: 1.5rem; }
+        .logo { height: 60px; width: auto; }
+        
+        .nav-links { display: none; }
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+            .nav-links a {
+                text-transform: uppercase; font-size: 0.85rem; font-weight: 600;
+                color: var(--text-secondary); text-decoration: none;
+            }
+            .nav-links a:hover, .nav-links a.active { color: var(--primary-accent); }
+        }
+
+        .lang-toggle { display: flex; border: 1px solid var(--primary-accent); border-radius: 2px; overflow: hidden; height: 38px; }
+        .lang-toggle button { padding: 0 1rem; font-size: 0.85rem; font-weight: 600; border: none; background: transparent; cursor: pointer; }
+        .lang-toggle .active { background-color: var(--primary-accent); color: white; }
+        .lang-toggle .inactive { color: var(--primary-accent); }
+
+        .btn-emergency {
+            background-color: var(--primary-accent); color: white; padding: 0 1.25rem; height: 38px;
+            border-radius: 2px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            display: flex; align-items: center; gap: 0.5rem; cursor: pointer; border: none;
+        }
+
+        .btn-menu {
+            display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; color: var(--text-primary); cursor: pointer; border: none; background: none;
+        }
+        .hamburger-icon { display: flex; flex-direction: column; gap: 5px; }
+        .hamburger-icon span { width: 22px; height: 1.5px; background-color: var(--text-primary); }
+
+        .hero-mini {
+            padding: 4rem 24px 2rem; text-align: center; background-color: rgba(97, 33, 43, 0.03);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-mini h1 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-accent); margin-bottom: 0.5rem; }
+        .hero-mini p { color: var(--text-secondary); max-width: 650px; margin: 0 auto; }
+
+        .form-section { padding: 3rem 0; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 800px) { .form-grid { grid-template-columns: 1fr; } }
+
+        .card-box {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-card); padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        }
+
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.75rem; border: 1px solid var(--border-color);
+            border-radius: 4px; font-family: inherit; font-size: 0.95rem; background: var(--bg-color);
+        }
+        
+        .btn-submit {
+            width: 100%; background: var(--primary-accent); color: white; padding: 0.9rem;
+            border: none; border-radius: 4px; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+        }
+        .btn-submit:hover { background: var(--primary-hover); }
+
+        .notice-preview {
+            background: #FFFDF9; border: 1px solid #D5CCC9; padding: 2rem; border-radius: 4px;
+            font-family: 'Times New Roman', serif; line-height: 1.8; color: #222; font-size: 0.95rem;
+            min-height: 400px; white-space: pre-wrap;
+        }
+
+        .floating-emergency {
+            position: fixed; bottom: 30px; left: 30px; background-color: var(--primary-accent);
+            color: white; padding: 0.85rem 1.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            z-index: 1000; border: none; cursor: pointer;
+        }
+
+        footer { background: var(--footer-bg); color: #D5CCC9; padding: 3rem 0; margin-top: 4rem; font-size: 0.88rem; }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" class="logo">
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="explore.html">Explore Issues</a>
+                    <a href="index.html">Guide</a>
+                    <a href="directory.html">Directory</a>
+                    <a href="news.html">News</a>
+                    <a href="rti.html">RTI Generator</a>
+                    <a href="legal-notice.html" class="active">Legal Notice</a>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <div class="lang-toggle">
+                    <button class="active">EN</button>
+                    <button class="inactive">हिं</button>
+                </div>
+                <button class="btn-emergency">EMERGENCY</button>
+                <button class="btn-menu" id="mobileMenuBtn">
+                    <div class="hamburger-icon"><span></span><span></span><span></span></div>
+                    MENU
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <header class="hero-mini">
+        <div class="container">
+            <h1>Legal Notice Draft Generator</h1>
+            <p>Draft a formal, legally structured notice in minutes for unpaid salary, security deposit return, or consumer dispute.</p>
+        </div>
+    </header>
+
+    <main class="container form-section">
+        <div class="form-grid">
+            <div class="card-box">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 1.5rem; color: var(--primary-accent);">Notice Details</h3>
+                <form id="noticeForm" onsubmit="event.preventDefault(); generateNotice();">
+                    <div class="form-group">
+                        <label>Select Notice Type</label>
+                        <select id="noticeType" onchange="generateNotice()">
+                            <option value="salary">Salary Non-Payment Demand Notice</option>
+                            <option value="deposit">Security Deposit Return Notice</option>
+                            <option value="consumer">Defective Product / Service Deficiency</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sender Name (Your Name)</label>
+                        <input type="text" id="senderName" value="Rahul Sharma" oninput="generateNotice()" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Opposite Party Name (Employer / Landlord / Company)</label>
+                        <input type="text" id="receiverName" value="Acme Corporation Pvt Ltd" oninput="generateNotice()" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount Due (₹)</label>
+                        <input type="number" id="amount" value="85000" oninput="generateNotice()" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Brief Description of Dispute</label>
+                        <textarea id="details" rows="3" oninput="generateNotice()">Salary withheld for the month of November and December without valid cause despite formal emails.</textarea>
+                    </div>
+                    <button type="button" class="btn-submit" onclick="window.print()">Print / Save as PDF</button>
+                </form>
+            </div>
+
+            <div class="card-box">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 1rem; color: var(--primary-accent);">Live Legal Draft Preview</h3>
+                <div class="notice-preview" id="noticeOutput">
+                    <!-- Dynamic Output -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Emergency -->
+    <button class="floating-emergency">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        Emergency
+    </button>
+
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>© 2026 NyaySetu. All Rights Reserved. Empowering Indian Citizens Through Accessible Legal Tools.</p>
+        </div>
+    </footer>
+
+    <script>
+        function generateNotice() {
+            const type = document.getElementById('noticeType').value;
+            const sender = document.getElementById('senderName').value || '[SENDER NAME]';
+            const receiver = document.getElementById('receiverName').value || '[RECEIVER NAME]';
+            const amount = document.getElementById('amount').value || '0';
+            const details = document.getElementById('details').value || '[DETAILS]';
+
+            const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            let draft = `LEGAL DEMAND NOTICE\n\nDate: ${today}\n\nTO:\n${receiver}\n\nFROM:\n${sender}\n\nSUBJECT: DEMAND NOTICE FOR PAYMENT OF OUTSTANDING DUES OF RS. ${amount}/-\n\nSir/Madam,\n\nUnder instructions from my client / on my own behalf, I hereby serve you with this formal legal notice:\n\n1. That the Sender was engaged with/associated with you and fulfilled all agreed contractual terms.\n\n2. ${details}\n\n3. That despite repeated reminders, you have failed to disburse the legitimate amount of Rs. ${amount}/-.\n\n4. You are hereby called upon to pay the sum of Rs. ${amount}/- along with interest at 18% p.a. within 15 days of receipt of this notice, failing which appropriate legal proceedings (Civil/Criminal/Labour Court) shall be initiated entirely at your risk and cost.\n\nSincerely,\n\n${sender}`;
+
+            document.getElementById('noticeOutput').innerText = draft;
+        }
+
+        document.addEventListener('DOMContentLoaded', generateNotice);
+    </script>
+    <script src="assets/emergency.js"></script>
+    <script src="assets/menu.js"></script>
+</body>
+
+</html>

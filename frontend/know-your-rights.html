@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your Rights | NyaySetu</title>
+    <meta name="description" content="Essential legal rights cards for every Indian citizen: police interactions, workplace rights, consumer rights, and fundamental constitutional protections.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/panels.css">
+    <style>
+        :root {
+            --bg-color: #FAF8F4;
+            --card-bg: #FFFFFF;
+            --primary-accent: #61212B;
+            --primary-hover: #4A1525;
+            --btn-cream: #EBDAC2;
+            --text-primary: #2C2A29;
+            --text-secondary: #7A7571;
+            --border-color: #E5E0D8;
+            --footer-bg: #291E1E;
+            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --border-radius-card: 6px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .navbar {
+            position: sticky; top: 0; background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color); z-index: 1000; padding: 0;
+        }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 90px; }
+        .navbar-left, .navbar-right { display: flex; align-items: center; height: 100%; gap: 1.5rem; }
+        .logo { height: 60px; width: auto; }
+        
+        .nav-links { display: none; }
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+            .nav-links a {
+                text-transform: uppercase; font-size: 0.85rem; font-weight: 600;
+                color: var(--text-secondary); text-decoration: none;
+            }
+            .nav-links a:hover, .nav-links a.active { color: var(--primary-accent); }
+        }
+
+        .lang-toggle { display: flex; border: 1px solid var(--primary-accent); border-radius: 2px; overflow: hidden; height: 38px; }
+        .lang-toggle button { padding: 0 1rem; font-size: 0.85rem; font-weight: 600; border: none; background: transparent; cursor: pointer; }
+        .lang-toggle .active { background-color: var(--primary-accent); color: white; }
+        .lang-toggle .inactive { color: var(--primary-accent); }
+
+        .btn-emergency {
+            background-color: var(--primary-accent); color: white; padding: 0 1.25rem; height: 38px;
+            border-radius: 2px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            display: flex; align-items: center; gap: 0.5rem; cursor: pointer; border: none;
+        }
+
+        .btn-menu {
+            display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; color: var(--text-primary); cursor: pointer; border: none; background: none;
+        }
+        .hamburger-icon { display: flex; flex-direction: column; gap: 5px; }
+        .hamburger-icon span { width: 22px; height: 1.5px; background-color: var(--text-primary); }
+
+        .hero-mini {
+            padding: 4rem 24px 2rem; text-align: center; background-color: rgba(97, 33, 43, 0.03);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-mini h1 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-accent); margin-bottom: 0.5rem; }
+        .hero-mini p { color: var(--text-secondary); max-width: 650px; margin: 0 auto; }
+
+        .rights-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px;
+            margin: 3rem 0;
+        }
+
+        .rights-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-card);
+            padding: 1.8rem; box-shadow: 0 4px 16px rgba(0,0,0,0.03); display: flex; flex-direction: column;
+        }
+        .rights-num { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--primary-accent); opacity: 0.8; margin-bottom: 8px; }
+        .rights-title { font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 12px; }
+        .rights-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
+        .rights-law { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary-accent); background: rgba(97, 33, 43, 0.06); padding: 4px 10px; border-radius: 4px; align-self: flex-start; }
+
+        .floating-emergency {
+            position: fixed; bottom: 30px; left: 30px; background-color: var(--primary-accent);
+            color: white; padding: 0.85rem 1.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            z-index: 1000; border: none; cursor: pointer;
+        }
+
+        footer { background: var(--footer-bg); color: #D5CCC9; padding: 3rem 0; margin-top: 4rem; font-size: 0.88rem; }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-left">
+                <a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="logo"></a>
+                <div class="nav-links">
+                    <a href="explore.html">Explore Issues</a>
+                    <a href="index.html">Guide</a>
+                    <a href="directory.html">Directory</a>
+                    <a href="news.html">News</a>
+                    <a href="know-your-rights.html" class="active">Know Your Rights</a>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <div class="lang-toggle">
+                    <button class="active">EN</button>
+                    <button class="inactive">हिं</button>
+                </div>
+                <button class="btn-emergency">EMERGENCY</button>
+                <button class="btn-menu" id="mobileMenuBtn">
+                    <div class="hamburger-icon"><span></span><span></span><span></span></div>
+                    MENU
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-mini">
+        <div class="container">
+            <h1>Know Your Rights</h1>
+            <p>Every citizen should know these key constitutional and legal protections before facing any emergency.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="rights-grid">
+            <div class="rights-card">
+                <div class="rights-num">01</div>
+                <div class="rights-title">Right Against Arbitrary Arrest</div>
+                <div class="rights-desc">Police cannot arrest you without telling you the grounds of arrest immediately. You have the right to consult a lawyer of your choice.</div>
+                <div class="rights-law">Article 22(1), Constitution of India</div>
+            </div>
+            <div class="rights-card">
+                <div class="rights-num">02</div>
+                <div class="rights-title">Right to Free Legal Aid</div>
+                <div class="rights-desc">If you cannot afford a lawyer, the state is legally bound to provide you a qualified legal defense advocate for free through NALSA/DLSA.</div>
+                <div class="rights-law">Article 39A, Constitution of India</div>
+            </div>
+            <div class="rights-card">
+                <div class="rights-num">03</div>
+                <div class="rights-title">Arrest Rules for Women</div>
+                <div class="rights-desc">Women cannot be arrested before sunrise or after sunset, except in exceptional circumstances with prior permission of a Magistrate. Only a female police officer can search a woman.</div>
+                <div class="rights-law">Sec 46(4), CrPC / BNSS</div>
+            </div>
+            <div class="rights-card">
+                <div class="rights-num">04</div>
+                <div class="rights-title">Right to 24-Hour Magistrate Production</div>
+                <div class="rights-desc">Any person arrested by police must be produced before a Magistrate within 24 hours of arrest (excluding travel time).</div>
+                <div class="rights-law">Sec 57 CrPC & Article 22(2)</div>
+            </div>
+            <div class="rights-card">
+                <div class="rights-num">05</div>
+                <div class="rights-title">Protection Against Recovery Agent Harassment</div>
+                <div class="rights-desc">Loan recovery agents cannot call you before 8 AM or after 7 PM, threaten you, or visit your workplace without prior notice.</div>
+                <div class="rights-law">RBI Fair Practice Code Guidelines</div>
+            </div>
+            <div class="rights-card">
+                <div class="rights-num">06</div>
+                <div class="rights-title">Right to Zero FIR</div>
+                <div class="rights-desc">If a cognizable crime takes place, any police station must register a Zero FIR regardless of territorial jurisdiction.</div>
+                <div class="rights-law">Ministry of Home Affairs Advisory</div>
+            </div>
+        </div>
+    </main>
+
+    <button class="floating-emergency">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        Emergency
+    </button>
+
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>© 2026 NyaySetu. All Rights Reserved. Empowering Citizens Through Legal Awareness.</p>
+        </div>
+    </footer>
+
+    <script src="assets/emergency.js"></script>
+    <script src="assets/menu.js"></script>
+</body>
+
+</html>
