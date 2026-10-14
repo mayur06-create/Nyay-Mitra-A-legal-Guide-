@@ -794,7 +794,7 @@ def main():
         full_html = f.read()
 
     # Change the title
-    full_html = re.sub(r'<title>.*?</title>', '<title>Consumer Rights | Nyay Setu</title>', full_html)
+    full_html = re.sub(r'<title>.*?</title>', '<title>Consumer Rights | NyayMitra</title>', full_html)
     
     # Inject CSS
     full_html = full_html.replace('/* Floating Elements */', css_content + '\n        /* Floating Elements */')

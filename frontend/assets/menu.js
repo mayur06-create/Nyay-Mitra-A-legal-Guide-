@@ -9,7 +9,7 @@
 
 const MENU_I18N = {
     en: {
-        brand: "NyaySetu",
+        brand: "NyayMitra",
         close: "Close menu",
         coreGroup: "Core Navigation",
         home: "Home / Guide",
@@ -36,7 +36,7 @@ const MENU_I18N = {
         recentSearches: "Recent Searches",
 
         aboutGroup: "About & Legal",
-        about: "About NyaySetu",
+        about: "About NyayMitra",
         howItWorks: "How It Works",
         faqs: "FAQs",
         feedback: "Feedback & Contact",
@@ -49,7 +49,7 @@ const MENU_I18N = {
         on: "ON",
         off: "OFF",
 
-        shareBtn: "Share NyaySetu",
+        shareBtn: "Share NyayMitra",
         copiedToast: "Link copied to clipboard!"
     },
     hi: {
@@ -100,10 +100,10 @@ const MENU_I18N = {
 
 class NyayMenuPanel {
     constructor() {
-        this.currentLang = localStorage.getItem('nyaysetu_lang') || 'en';
-        this.fontSize = localStorage.getItem('nyaysetu_font_size') || 'md';
-        this.highContrast = localStorage.getItem('nyaysetu_high_contrast') === 'true';
-        this.darkMode = localStorage.getItem('nyaysetu_dark_mode') === 'true';
+        this.currentLang = localStorage.getItem('nyaymitra_lang') || 'en';
+        this.fontSize = localStorage.getItem('nyaymitra_font_size') || 'md';
+        this.highContrast = localStorage.getItem('nyaymitra_high_contrast') === 'true';
+        this.darkMode = localStorage.getItem('nyaymitra_dark_mode') === 'true';
         this.init();
     }
 
@@ -165,7 +165,7 @@ class NyayMenuPanel {
             <div class="nyay-menu-header">
                 <div class="nyay-menu-brand">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India">
-                    <span id="menuBrandTxt">NyaySetu</span>
+                    <span id="menuBrandTxt">NyayMitra</span>
                 </div>
                 <div class="nyay-menu-controls">
                     <div class="lang-toggle" id="menuLangToggle">
@@ -276,7 +276,7 @@ class NyayMenuPanel {
                     <div class="nyay-nav-links-list">
                         <a href="about.html" class="nyay-nav-link" data-path="about.html">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            <span id="menuAbout">About NyaySetu</span>
+                            <span id="menuAbout">About NyayMitra</span>
                         </a>
                         <a href="faq.html" class="nyay-nav-link" data-path="faq.html">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
@@ -317,10 +317,10 @@ class NyayMenuPanel {
                     </div>
                 </div>
 
-                <!-- Share NyaySetu Button -->
+                <!-- Share NyayMitra Button -->
                 <button class="nyay-share-btn" id="menuShareBtn">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                    <span id="menuShareTxt">Share NyaySetu</span>
+                    <span id="menuShareTxt">Share NyayMitra</span>
                 </button>
             </div>
         `;
@@ -388,7 +388,7 @@ class NyayMenuPanel {
                 fontBtns.forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
                 this.fontSize = e.target.getAttribute('data-size');
-                localStorage.setItem('nyaysetu_font_size', this.fontSize);
+                localStorage.setItem('nyaymitra_font_size', this.fontSize);
                 this.applySettings();
             });
         });
@@ -397,7 +397,7 @@ class NyayMenuPanel {
         if (contrastBtn) {
             contrastBtn.addEventListener('click', () => {
                 this.highContrast = !this.highContrast;
-                localStorage.setItem('nyaysetu_high_contrast', this.highContrast);
+                localStorage.setItem('nyaymitra_high_contrast', this.highContrast);
                 contrastBtn.classList.toggle('active', this.highContrast);
                 contrastBtn.innerText = this.highContrast ? (this.currentLang === 'hi' ? 'चालू' : 'ON') : (this.currentLang === 'hi' ? 'बंद' : 'OFF');
                 this.applySettings();
@@ -408,7 +408,7 @@ class NyayMenuPanel {
         if (darkBtn) {
             darkBtn.addEventListener('click', () => {
                 this.darkMode = !this.darkMode;
-                localStorage.setItem('nyaysetu_dark_mode', this.darkMode);
+                localStorage.setItem('nyaymitra_dark_mode', this.darkMode);
                 darkBtn.classList.toggle('active', this.darkMode);
                 darkBtn.innerText = this.darkMode ? (this.currentLang === 'hi' ? 'चालू' : 'ON') : (this.currentLang === 'hi' ? 'बंद' : 'OFF');
                 this.applySettings();
@@ -480,7 +480,7 @@ class NyayMenuPanel {
 
     setLanguage(lang) {
         this.currentLang = lang;
-        localStorage.setItem('nyaysetu_lang', lang);
+        localStorage.setItem('nyaymitra_lang', lang);
         
         // Sync Navbar lang buttons
         this.syncNavbarLangButtons();
@@ -558,7 +558,7 @@ class NyayMenuPanel {
 
     shareApp() {
         const shareData = {
-            title: 'NyaySetu | Legal Guide India',
+            title: 'NyayMitra | Legal Guide India',
             text: 'India\'s first AI-powered Legal First-Response System. Legal aid simplified.',
             url: window.location.origin + window.location.pathname
         };
@@ -573,7 +573,7 @@ class NyayMenuPanel {
     }
 
     showSavedArticlesToast() {
-        const saved = JSON.parse(localStorage.getItem('nyaysetu_saved_cases') || '[]');
+        const saved = JSON.parse(localStorage.getItem('nyaymitra_saved_cases') || '[]');
         const count = saved.length;
         const msg = this.currentLang === 'hi' 
             ? `आपके पास ${count} सहेजे गए लेख हैं।` 

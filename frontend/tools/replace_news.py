@@ -4,7 +4,7 @@ with open('news.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Update title
-content = content.replace('<title>Legal Guide | Nyay Setu</title>', '<title>News | Nyay Setu</title>')
+content = content.replace('<title>Legal Guide | NyayMitra</title>', '<title>News | NyayMitra</title>')
 
 # Update navbar
 nav_old = """                <div class="nav-links">

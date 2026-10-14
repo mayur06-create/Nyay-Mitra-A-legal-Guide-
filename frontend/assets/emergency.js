@@ -130,8 +130,8 @@ const EMERGENCY_I18N = {
 
 class NyayEmergencyPanel {
     constructor() {
-        this.currentLang = localStorage.getItem('nyaysetu_lang') || 'en';
-        this.trustedContacts = JSON.parse(localStorage.getItem('nyaysetu_trusted_contacts') || '[]');
+        this.currentLang = localStorage.getItem('nyaymitra_lang') || 'en';
+        this.trustedContacts = JSON.parse(localStorage.getItem('nyaymitra_trusted_contacts') || '[]');
         this.sosLocation = null;
         this.init();
     }
@@ -476,8 +476,8 @@ class NyayEmergencyPanel {
     shareSos(type) {
         const isHi = this.currentLang === 'hi';
         let msg = isHi 
-            ? "आपातकालीन SOS (NyaySetu)! मुझे तुरंत सहायता की आवश्यकता है।" 
-            : "EMERGENCY SOS (NyaySetu)! I need immediate help.";
+            ? "आपातकालीन SOS (NyayMitra)! मुझे तुरंत सहायता की आवश्यकता है।" 
+            : "EMERGENCY SOS (NyayMitra)! I need immediate help.";
 
         if (this.sosLocation) {
             msg += ` ${isHi ? 'मेरी लाइव लोकेशन:' : 'My location:'} ${this.sosLocation}`;
@@ -537,7 +537,7 @@ class NyayEmergencyPanel {
 
         if (name && phone && this.trustedContacts.length < 3) {
             this.trustedContacts.push({ name, phone });
-            localStorage.setItem('nyaysetu_trusted_contacts', JSON.stringify(this.trustedContacts));
+            localStorage.setItem('nyaymitra_trusted_contacts', JSON.stringify(this.trustedContacts));
             nameInput.value = '';
             phoneInput.value = '';
             this.renderTrustedContacts();
@@ -546,7 +546,7 @@ class NyayEmergencyPanel {
 
     deleteContact(index) {
         this.trustedContacts.splice(index, 1);
-        localStorage.setItem('nyaysetu_trusted_contacts', JSON.stringify(this.trustedContacts));
+        localStorage.setItem('nyaymitra_trusted_contacts', JSON.stringify(this.trustedContacts));
         this.renderTrustedContacts();
     }
 

@@ -10,9 +10,15 @@ import sys, re, json, random
 
 def read_text(path):
     if path.lower().endswith(".pdf"):
-        import fitz  # PyMuPDF
-        doc = fitz.open(path)
-        return "\n".join(page.get_text() for page in doc)
+        # pypdf pure-Python hai (koi DLL nahi), isliye Windows Application Control block nahi karta.
+        try:
+            from pypdf import PdfReader
+            reader = PdfReader(path)
+            return "\n".join((page.extract_text() or "") for page in reader.pages)
+        except ImportError:
+            import pymupdf  # fallback, agar pypdf install na ho
+            doc = pymupdf.open(path)
+            return "\n".join(page.get_text() for page in doc)
     return open(path, encoding="utf-8").read()
 
 def clean_lines(raw):
