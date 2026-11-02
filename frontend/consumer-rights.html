@@ -1807,8 +1807,10 @@
         <div class="container">
             <div class="navbar-left">
                 <div class="logo-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
-                        alt="Emblem of India" class="logo">
+                    <a href="index.html" title="NyayMitra Home">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                            alt="Emblem of India" class="logo">
+                    </a>
                 </div>
 
                 <div class="nav-links">
@@ -1816,19 +1818,20 @@
                     <a href="index.html">Guide</a>
                     <a href="directory.html">Directory</a>
                     <a href="news.html">News</a>
-                    <a href="#">RTI Generator</a>
-                    <a href="#">AI Analysis</a>
+                    <a href="rti.html">RTI Generator</a>
+                    <a href="explore.html#ai">AI Analysis</a>
+                    <a href="legal-notice.html">Legal Notice</a>
                 </div>
             </div>
 
             <div class="navbar-right">
                 <div class="nav-actions">
-                    <div class="lang-toggle">
-                        <button class="active">EN</button>
-                        <button class="inactive">हिं</button>
+                    <div class="lang-toggle" aria-label="Language Selector">
+                        <button class="active" data-lang="en">EN</button>
+                        <button class="inactive" data-lang="hi">हिं</button>
                     </div>
-                    <button class="btn-signin" onclick="window.location.href='signin.html'">SIGN IN</button>
-                    <button class="btn-emergency">
+                    <a href="signin.html" class="btn-signin">SIGN IN</a>
+                    <button class="btn-emergency" aria-label="Emergency Legal Help">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path
@@ -1839,7 +1842,7 @@
                     </button>
                 </div>
 
-                <button class="btn-menu" id="mobileMenuBtn">
+                <button class="btn-menu" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nyayMenuDrawer">
                     <div class="hamburger-icon">
                         <span></span>
                         <span></span>
@@ -2267,219 +2270,30 @@
             }
         });
 
-        // Article Data
-        const featuredArticleData = {
-            category: "Tenant Rights",
-            readTime: "8 min read",
-            title: "Your Complete Guide to Getting Your Security Deposit Back",
-            summary: "Every year, thousands of tenants lose their deposits unfairly. Here is exactly what the law says and what you should do, step by step.",
-            date: "December 15, 2024"
-        };
-
-        const gridArticlesData = [
-            {
-                category: "Police & FIR",
-                readTime: "6 min",
-                title: "Police Refusing to File Your FIR? Here Are 5 Things You Can Do Right Now",
-                summary: "It is illegal for police to refuse an FIR. If they do, you have powerful legal remedies — most people just don't know about them.",
-                date: "Dec 10, 2024"
-            },
-            {
-                category: "Consumer Rights",
-                readTime: "10 min",
-                title: "How to File a Consumer Complaint Online in 2024 (Complete Process)",
-                summary: "You can now file consumer complaints from your phone in under 10 minutes. No lawyer needed. Here is the exact process with...",
-                date: "Dec 8, 2024"
-            },
-            {
-                category: "Workplace",
-                readTime: "7 min",
-                title: "Fired Without Notice? Your Rights as an Employee in India",
-                summary: "Indian labor law requires employers to follow specific procedures before termination. If they didn’t, you may be entitled to...",
-                date: "Dec 5, 2024"
-            },
-            {
-                category: "Cyber Crime",
-                readTime: "5 min",
-                title: "Lost Money to an Online Scam? Act Within 24 Hours for Best Recovery Chances",
-                summary: "The golden window for recovering money lost to cyber fraud is the first 24 hours. Here is the exact sequence of calls and complaints to file.",
-                date: "Dec 1, 2024"
-            },
-            {
-                category: "Property",
-                readTime: "9 min",
-                title: "Builder Not Giving Possession? How to File a RERA Complaint",
-                summary: "RERA gives homebuyers powerful rights against builder delays. Filing a complaint is free in most states and doesn't require a...",
-                date: "Nov 28, 2024"
-            },
-            {
-                category: "Family Law",
-                readTime: "11 min",
-                title: "Understanding the Protection of Women from Domestic Violence Act",
-                summary: "Domestic violence isn't just physical. The law recognizes emotional, verbal, economic, and sexual abuse. Know what protection is...",
-                date: "Nov 25, 2024"
-            },
-            {
-                category: "RTI & Government",
-                readTime: "7 min",
-                title: "RTI for Beginners: How to Get Information from Any Government Office",
-                summary: "The Right to Information Act is one of the most powerful tools citizens have. Filing one costs Rs. 10 and can expose corruption,...",
-                date: "Nov 20, 2024"
-            },
-            {
-                category: "Financial Fraud",
-                readTime: "6 min",
-                title: "Recovery Agents Threatening You? Know the RBI Rules They Are Breaking",
-                summary: "RBI has strict guidelines on loan recovery. Agents cannot call before 8 AM, threaten you, visit your workplace, or contact your family....",
-                date: "Nov 15, 2024"
-            },
-            {
-                category: "Police & FIR",
-                readTime: "8 min",
-                title: "Bail in India: Types, Process, and Your Constitutional Right",
-                summary: "Bail is the rule, jail is the exception. Understanding bail can mean the difference between freedom and unnecessary detention.",
-                date: "Nov 10, 2024"
-            },
-            {
-                category: "Know Your Rights",
-                readTime: "9 min",
-                title: "How to File a Medical Negligence Complaint Against a Hospital or Doctor",
-                summary: "If a hospital's carelessness caused harm, you have the right to compensation. The process starts with the State Medical Council.",
-                date: "Nov 5, 2024"
-            },
-            {
-                category: "Tenant Rights",
-                readTime: "6 min",
-                title: "Can Your Landlord Evict You? Understanding Legal vs Illegal Eviction",
-                summary: "No landlord can throw you out, change locks, or cut utilities without a court order. If they do, it is a criminal offense.",
-                date: "Oct 30, 2024"
-            }
-        ];
-
-        // Filter pills are hardcoded in HTML for dashboard view
-
-        function renderFeatured() {
-            const container = document.getElementById('featuredArticle');
-            const data = featuredArticleData;
-
-            container.innerHTML = `
-                <div class="article-card">
-                    <div class="article-card-content">
-                        <div class="article-meta">
-                            <span class="article-category">${data.category}</span>
-                            <span class="article-time">${data.readTime}</span>
-                        </div>
-                        <h2 class="article-title">${data.title}</h2>
-                        <p class="article-summary">${data.summary}</p>
-                    </div>
-                    <div class="article-card-footer">
-                        <span class="article-date">${data.date}</span>
-                        <span class="featured-read-btn">
-                            Read Article 
-                            <svg class="article-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderGrid() {
-            const grid = document.getElementById('articlesGrid');
-
-            gridArticlesData.forEach((data, index) => {
-                const card = document.createElement('div');
-                card.className = 'article-card';
-                // Stagger columns for cool load effect
-                card.style.transitionDelay = `${(index % 3) * 80}ms`;
-
-                card.innerHTML = `
-                    <div class="article-card-content">
-                        <div class="article-meta">
-                            <span class="article-category">${data.category}</span>
-                            <span class="article-time">${data.readTime}</span>
-                        </div>
-                        <h3 class="article-title">${data.title}</h3>
-                        <p class="article-summary">${data.summary}</p>
-                    </div>
-                    <div class="article-card-footer">
-                        <span class="article-date">${data.date}</span>
-                        <svg class="article-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-            });
-        }
-
-        function setupScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-up');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            document.querySelectorAll('.article-card').forEach(card => {
-                observer.observe(card);
-            });
-
-            // Navbar shadow and scroll-to-top button logic
+        // Scroll to top button & navbar shadow
+        document.addEventListener('DOMContentLoaded', () => {
             const navbar = document.getElementById('navbar');
             const toTopBtn = document.getElementById('scrollToTopBtn');
-            const mobileBtn = document.getElementById('mobileMenuBtn');
-            const closeBtn = document.getElementById('drawerCloseBtn');
-            const drawer = document.getElementById('mobileDrawer');
 
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 10) {
-                    navbar.classList.add('scrolled');
+                    navbar?.classList.add('scrolled');
                 } else {
-                    navbar.classList.remove('scrolled');
+                    navbar?.classList.remove('scrolled');
                 }
 
                 if (window.scrollY > 300) {
-                    toTopBtn.classList.add('visible');
+                    toTopBtn?.classList.add('visible');
                 } else {
-                    toTopBtn.classList.remove('visible');
+                    toTopBtn?.classList.remove('visible');
                 }
             });
 
-            toTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            if (mobileBtn && drawer) {
-                mobileBtn.addEventListener('click', () => {
-                    drawer.classList.add('open');
-                    document.body.style.overflow = 'hidden';
+            if (toTopBtn) {
+                toTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
-
-            if (closeBtn && drawer) {
-                closeBtn.addEventListener('click', () => {
-                    drawer.classList.remove('open');
-                    document.body.style.overflow = '';
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-
-
-            setTimeout(() => {
-                setupScrollAnimations();
-            }, 50);
         });
     </script>
 

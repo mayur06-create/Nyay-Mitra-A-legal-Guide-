@@ -401,6 +401,9 @@ class NyayEmergencyPanel {
     }
 
     open() {
+        if (window.nyayMenuInstance) {
+            window.nyayMenuInstance.close();
+        }
         const drawer = document.getElementById('nyayEmergencyDrawer');
         const overlay = document.getElementById('nyayOverlay');
 

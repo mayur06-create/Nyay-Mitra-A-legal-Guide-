@@ -968,18 +968,18 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="navbar-left">
-                <div class="logo-container">
+                <a href="index.html" class="logo-container" title="NyayMitra Home">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
                         alt="Emblem of India" class="logo">
-                </div>
+                </a>
 
                 <div class="nav-links">
                     <a href="explore.html">Explore Issues</a>
                     <a href="index.html" class="active">Guide</a>
                     <a href="directory.html">Directory</a>
                     <a href="news.html">News</a>
-                    <a href="#">RTI Generator</a>
-                    <a href="#">AI Analysis</a>
+                    <a href="rti.html">RTI Generator</a>
+                    <a href="explore.html#ai">AI Analysis</a>
                 </div>
             </div>
 
@@ -1024,8 +1024,8 @@
 
             <div class="search-container">
                 <div class="search-box">
-                    <input type="text" placeholder="E.g., My employer is withholding my salary...">
-                    <button class="btn-search">
+                    <input type="text" id="heroSearchInput" placeholder="E.g., My employer is withholding my salary..." onkeydown="if(event.key==='Enter') executeHeroSearch()">
+                    <button class="btn-search" onclick="executeHeroSearch()" aria-label="Search">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1037,18 +1037,18 @@
 
             <div class="pills-container">
                 <div class="pills-scroll">
-                    <button class="filter-pill">Salary Not Paid</button>
-                    <button class="filter-pill">Defective Product</button>
-                    <button class="filter-pill">FIR Refusal</button>
-                    <button class="filter-pill">Builder Delay</button>
-                    <button class="filter-pill">Social Media Harassment</button>
-                    <button class="filter-pill">Domestic Violence</button>
+                    <button class="filter-pill" onclick="handlePillClick(this, 'Labour & Employment')">Salary Not Paid</button>
+                    <button class="filter-pill" onclick="handlePillClick(this, 'Consumer Rights')">Defective Product</button>
+                    <button class="filter-pill" onclick="handlePillClick(this, 'Criminal Law')">FIR Refusal</button>
+                    <button class="filter-pill" onclick="handlePillClick(this, 'Real Estate (RERA)')">Builder Delay</button>
+                    <button class="filter-pill" onclick="handlePillClick(this, 'Cyber Crime')">Social Media Harassment</button>
+                    <button class="filter-pill" onclick="handlePillClick(this, 'Family & Domestic')">Domestic Violence</button>
                 </div>
             </div>
 
             <div class="hero-actions">
-                <button class="btn-large btn-primary">EXPLORE YOUR RIGHTS</button>
-                <button class="btn-large btn-outline">ANALYZE MY CASE</button>
+                <button class="btn-large btn-primary" onclick="window.location.href='explore.html'">EXPLORE YOUR RIGHTS</button>
+                <button class="btn-large btn-outline" onclick="window.location.href='explore.html#ai'">ANALYZE MY CASE</button>
             </div>
         </div>
     </header>
@@ -1266,7 +1266,7 @@
             const data = featuredArticleData;
 
             container.innerHTML = `
-                <div class="article-card">
+                <div class="article-card" onclick="window.location.href='consumer-rights.html'" style="cursor:pointer;" title="Click to read full guide">
                     <div class="article-card-content">
                         <div class="article-meta">
                             <span class="article-category">${data.category}</span>
@@ -1289,14 +1289,26 @@
             `;
         }
 
-        function renderGrid() {
-            const grid = document.getElementById('articlesGrid');
+        function getCardLink(category) {
+            const cat = category.toLowerCase();
+            if (cat.includes('consumer')) return 'consumer-rights.html';
+            if (cat.includes('rti')) return 'rti.html';
+            if (cat.includes('notice')) return 'legal-notice.html';
+            return 'explore.html';
+        }
 
-            gridArticlesData.forEach((data, index) => {
+        function renderGrid(articles = gridArticlesData) {
+            const grid = document.getElementById('articlesGrid');
+            grid.innerHTML = '';
+
+            articles.forEach((data, index) => {
                 const card = document.createElement('div');
                 card.className = 'article-card';
-                // Stagger columns for cool load effect
                 card.style.transitionDelay = `${(index % 3) * 80}ms`;
+                card.style.cursor = 'pointer';
+                const dest = getCardLink(data.category);
+                card.onclick = () => window.location.href = dest;
+                card.title = `Read guide on ${data.title}`;
 
                 card.innerHTML = `
                     <div class="article-card-content">
@@ -1320,6 +1332,34 @@
             });
         }
 
+        function executeHeroSearch() {
+            const query = (document.getElementById('heroSearchInput')?.value || '').trim();
+            if (query) {
+                window.location.href = `explore.html?q=${encodeURIComponent(query)}`;
+            } else {
+                window.location.href = 'explore.html';
+            }
+        }
+
+        function handlePillClick(pillBtn, category) {
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            pillBtn.classList.add('active');
+
+            const filtered = gridArticlesData.filter(a => 
+                a.category.toLowerCase().includes(category.toLowerCase()) || 
+                category.toLowerCase().includes(a.category.toLowerCase()) ||
+                a.title.toLowerCase().includes(pillBtn.textContent.toLowerCase())
+            );
+
+            if (filtered.length > 0) {
+                renderGrid(filtered);
+                setupScrollAnimations();
+                document.querySelector('.articles-section').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.location.href = `explore.html?q=${encodeURIComponent(pillBtn.textContent.trim())}`;
+            }
+        }
+
         function setupScrollAnimations() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1340,39 +1380,24 @@
             // Navbar shadow and scroll-to-top button logic
             const navbar = document.getElementById('navbar');
             const toTopBtn = document.getElementById('scrollToTopBtn');
-            const mobileBtn = document.getElementById('mobileMenuBtn');
-            const closeBtn = document.getElementById('drawerCloseBtn');
-            const drawer = document.getElementById('mobileDrawer');
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
+            if (navbar && toTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 10) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
 
-                if (window.scrollY > 300) {
-                    toTopBtn.classList.add('visible');
-                } else {
-                    toTopBtn.classList.remove('visible');
-                }
-            });
-
-            toTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            if (mobileBtn && drawer) {
-                mobileBtn.addEventListener('click', () => {
-                    drawer.classList.add('open');
-                    document.body.style.overflow = 'hidden';
+                    if (window.scrollY > 300) {
+                        toTopBtn.classList.add('visible');
+                    } else {
+                        toTopBtn.classList.remove('visible');
+                    }
                 });
-            }
 
-            if (closeBtn && drawer) {
-                closeBtn.addEventListener('click', () => {
-                    drawer.classList.remove('open');
-                    document.body.style.overflow = '';
+                toTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
         }

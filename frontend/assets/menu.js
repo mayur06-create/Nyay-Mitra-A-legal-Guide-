@@ -343,11 +343,27 @@ class NyayMenuPanel {
 
         if (closeBtn) closeBtn.addEventListener('click', () => this.close());
         
-        // Connect hamburger buttons on any page
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                this.close();
+            });
+        }
+
+        // Connect hamburger buttons on any page with smooth toggle
         document.querySelectorAll('#mobileMenuBtn, .btn-menu').forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-controls', 'nyayMenuDrawer');
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.open();
+                e.stopPropagation();
+                this.toggle();
+            });
+        });
+
+        // Close drawer smoothly on clicking any internal link in the menu
+        document.querySelectorAll('#nyayMenuDrawer .nyay-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                this.close();
             });
         });
 
@@ -423,13 +439,29 @@ class NyayMenuPanel {
         });
     }
 
+    toggle() {
+        const drawer = document.getElementById('nyayMenuDrawer');
+        if (drawer && drawer.classList.contains('open')) {
+            this.close();
+        } else {
+            this.open();
+        }
+    }
+
     open() {
+        if (window.nyayEmergencyInstance) {
+            window.nyayEmergencyInstance.close();
+        }
         const drawer = document.getElementById('nyayMenuDrawer');
         const overlay = document.getElementById('nyayOverlay');
         if (drawer && overlay) {
             overlay.classList.add('active');
             drawer.classList.add('open');
             document.body.classList.add('nyay-panel-open');
+            document.querySelectorAll('#mobileMenuBtn, .btn-menu').forEach(b => {
+                b.setAttribute('aria-expanded', 'true');
+                b.classList.add('is-active');
+            });
         }
     }
 
@@ -438,6 +470,10 @@ class NyayMenuPanel {
         const overlay = document.getElementById('nyayOverlay');
         if (drawer && overlay) {
             drawer.classList.remove('open');
+            document.querySelectorAll('#mobileMenuBtn, .btn-menu').forEach(b => {
+                b.setAttribute('aria-expanded', 'false');
+                b.classList.remove('is-active');
+            });
             if (!document.getElementById('nyayEmergencyDrawer')?.classList.contains('open')) {
                 overlay.classList.remove('active');
                 document.body.classList.remove('nyay-panel-open');

@@ -5,19 +5,43 @@
 
 /* Dark & High Contrast Themes */
 body.dark-theme {
-    --bg-color: #1a1616 !important;
-    --card-bg: #262020 !important;
-    --text-primary: #f3ede7 !important;
-    --text-secondary: #b5aba6 !important;
-    --border-color: #3b3232 !important;
-    --footer-bg: #120e0e !important;
-    --primary-accent: #9e3d4c !important;
-    --primary-hover: #b8495a !important;
+    --bg-color: #161313 !important;
+    --card-bg: #221c1c !important;
+    --text-primary: #f5eee8 !important;
+    --text-secondary: #c2b6b0 !important;
+    --border-color: #3d3232 !important;
+    --footer-bg: #0f0c0c !important;
+    --primary-accent: #c44d5e !important;
+    --primary-hover: #db5e71 !important;
+    --btn-cream: #382c2a !important;
 }
 
-body.dark-theme .navbar {
-    background-color: var(--bg-color) !important;
-    border-bottom-color: var(--border-color) !important;
+body.dark-theme,
+body.dark-theme .navbar,
+body.dark-theme .card-box,
+body.dark-theme .article-card,
+body.dark-theme .dir-card,
+body.dark-theme .login-card,
+body.dark-theme .form-card,
+body.dark-theme .sidebar,
+body.dark-theme .sidebar-nav,
+body.dark-theme .faq-item,
+body.dark-theme .term-card,
+body.dark-theme .rights-card,
+body.dark-theme .step-box,
+body.dark-theme .dir-header,
+body.dark-theme .hero-mini {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+    background-color: #1a1616 !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
 }
 
 body.high-contrast {
@@ -30,11 +54,79 @@ body.high-contrast {
     --primary-hover: #ff6677 !important;
 }
 
+body.high-contrast * {
+    border-color: #ffffff !important;
+}
+
 body.font-size-sm {
     font-size: 14px !important;
 }
+body.font-size-sm p, body.font-size-sm a, body.font-size-sm span {
+    font-size: 0.9em !important;
+}
 body.font-size-lg {
     font-size: 18px !important;
+}
+body.font-size-lg p, body.font-size-lg a, body.font-size-lg span {
+    font-size: 1.1em !important;
+}
+
+/* Polished Hamburger Menu Button & Icon */
+.btn-menu {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    background: transparent;
+}
+
+.btn-menu:hover,
+.btn-menu.is-active {
+    color: var(--primary-accent);
+    background-color: rgba(97, 33, 43, 0.08);
+}
+
+.hamburger-icon {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4.5px;
+    width: 22px;
+    height: 18px;
+    position: relative;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, background-color 0.25s ease;
+    transform-origin: center;
+}
+
+/* Morph to an elegant X indicator when drawer is active */
+.btn-menu.is-active .hamburger-icon span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+.btn-menu.is-active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.btn-menu.is-active .hamburger-icon span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* Scroll Lock */

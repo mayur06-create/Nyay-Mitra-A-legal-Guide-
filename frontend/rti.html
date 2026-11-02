@@ -647,11 +647,14 @@
 <body>
 
     <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="navbar-left">
                 <div class="logo-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" class="logo">
+                    <a href="index.html" title="NyayMitra Home">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" class="logo">
+                    </a>
                 </div>
                 
                 <div class="nav-links">
@@ -660,24 +663,25 @@
                     <a href="directory.html">Directory</a>
                     <a href="news.html">News</a>
                     <a href="rti.html" class="active">RTI Generator</a>
-                    <a href="analysis.html">AI Analysis</a>
+                    <a href="explore.html#ai">AI Analysis</a>
+                    <a href="legal-notice.html">Legal Notice</a>
                 </div>
             </div>
 
             <div class="navbar-right">
                 <div class="nav-actions">
-                    <div class="lang-toggle">
-                        <button class="active">EN</button>
-                        <button class="inactive">हिं</button>
+                    <div class="lang-toggle" aria-label="Language Selector">
+                        <button class="active" data-lang="en">EN</button>
+                        <button class="inactive" data-lang="hi">हिं</button>
                     </div>
-                    <button class="btn-signin" onclick="window.location.href='signin.html'">SIGN IN</button>
-                    <button class="btn-emergency">
+                    <a href="signin.html" class="btn-signin">SIGN IN</a>
+                    <button class="btn-emergency" aria-label="Emergency Legal Help">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         EMERGENCY
                     </button>
                 </div>
 
-                <button class="btn-menu" id="mobileMenuBtn">
+                <button class="btn-menu" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nyayMenuDrawer">
                     <div class="hamburger-icon">
                         <span></span>
                         <span></span>
@@ -693,37 +697,37 @@
     <header class="rti-hero">
         <div class="container">
             <h1>RTI Application Generator</h1>
-            <p>File a Right to Information request in under 5 minutes.</p>
+            <p>Draft and file a legally sound Right to Information request under Section 6(1) of the RTI Act 2005 in under 5 minutes.</p>
         </div>
     </header>
 
     <!-- Progress steps -->
     <div class="progress-container">
-        <div class="progress-step active">
+        <div class="progress-step active" id="progStep1" onclick="goToStep(1)">
             <div class="progress-circle">1</div>
             <div class="progress-label">DETAILS</div>
         </div>
-        <div class="progress-line"></div>
+        <div class="progress-line" id="progLine1"></div>
         
-        <div class="progress-step">
+        <div class="progress-step" id="progStep2" onclick="goToStep(2)">
             <div class="progress-circle">2</div>
             <div class="progress-label">DEPARTMENT</div>
         </div>
-        <div class="progress-line"></div>
+        <div class="progress-line" id="progLine2"></div>
         
-        <div class="progress-step">
+        <div class="progress-step" id="progStep3" onclick="goToStep(3)">
             <div class="progress-circle">3</div>
             <div class="progress-label">QUESTIONS</div>
         </div>
-        <div class="progress-line"></div>
+        <div class="progress-line" id="progLine3"></div>
 
-        <div class="progress-step">
+        <div class="progress-step" id="progStep4" onclick="goToStep(4)">
             <div class="progress-circle">4</div>
             <div class="progress-label">PREVIEW</div>
         </div>
-        <div class="progress-line"></div>
+        <div class="progress-line" id="progLine4"></div>
 
-        <div class="progress-step">
+        <div class="progress-step" id="progStep5" onclick="goToStep(5)">
             <div class="progress-circle">5</div>
             <div class="progress-label">DOWNLOAD</div>
         </div>
@@ -732,46 +736,201 @@
     <!-- Form Section -->
     <div class="container">
         <div class="form-card">
-            <div class="form-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-                <h2>Applicant Details</h2>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">FULL NAME</label>
-                <input type="text" class="form-input" placeholder="As per official ID" />
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">COMPLETE POSTAL ADDRESS</label>
-                <textarea class="form-input" placeholder="House no, Street, Landmark..."></textarea>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">CITY / TOWN</label>
-                    <input type="text" class="form-input" placeholder="e.g. Pune" />
-                </div>
-                <div class="form-group">
-                    <label class="form-label">PINCODE</label>
-                    <input type="text" class="form-input" placeholder="123456" />
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="btn-continue">
-                    CONTINUE TO DEPARTMENT 
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
+            <!-- Step 1: Applicant Details -->
+            <div id="wizardStep1" class="wizard-panel">
+                <div class="form-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                </button>
+                    <h2>Step 1: Applicant Details</h2>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">FULL NAME *</label>
+                    <input type="text" id="rtiName" class="form-input" placeholder="As per official government ID" value="Mayur Sharma" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">COMPLETE POSTAL ADDRESS *</label>
+                    <textarea id="rtiAddress" class="form-input" placeholder="House no, Street, Colony, Landmark...">Flat 402, Royal Residency, M.G. Road</textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">CITY / DISTRICT *</label>
+                        <input type="text" id="rtiCity" class="form-input" placeholder="e.g. Indore" value="Indore" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">PINCODE *</label>
+                        <input type="text" id="rtiPin" class="form-input" placeholder="452001" value="452001" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">CONTACT NUMBER</label>
+                        <input type="tel" id="rtiPhone" class="form-input" placeholder="+91 98765 43210" value="+91 98765 43210" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">EMAIL ADDRESS</label>
+                        <input type="email" id="rtiEmail" class="form-input" placeholder="citizen@example.com" value="mayur.legal@example.com" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-continue" onclick="goToStep(2)">
+                        CONTINUE TO DEPARTMENT 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Department Selection -->
+            <div id="wizardStep2" class="wizard-panel" style="display:none;">
+                <div class="form-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                    <h2>Step 2: Public Authority & Department</h2>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">JURISDICTION *</label>
+                    <select id="rtiGovType" class="form-input" style="background:var(--bg-color);">
+                        <option value="Central Government of India">Central Government of India (Ministries, PSUs, Railways, Nationalised Banks)</option>
+                        <option value="State Government">State Government / Municipal Corporation / Police Department</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">DEPARTMENT / MINISTRY / PUBLIC AUTHORITY NAME *</label>
+                    <input type="text" id="rtiDept" class="form-input" placeholder="e.g. Municipal Corporation / Ministry of Road Transport / State Police Department" value="Indore Municipal Corporation (Public Works Dept)" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">DESIGNATION OF PUBLIC INFORMATION OFFICER (PIO) *</label>
+                    <input type="text" id="rtiPio" class="form-input" placeholder="e.g. The Central Public Information Officer (CPIO) / PIO" value="The Public Information Officer (PIO)" />
+                </div>
+
+                <div class="form-actions" style="display:flex; justify-content:space-between; gap:12px;">
+                    <button type="button" style="border:1px solid var(--border-color); padding:0.8rem 1.4rem; border-radius:4px; font-weight:600; cursor:pointer;" onclick="goToStep(1)">← Back to Details</button>
+                    <button type="button" class="btn-continue" onclick="goToStep(3)">
+                        CONTINUE TO QUESTIONS 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Information Sought -->
+            <div id="wizardStep3" class="wizard-panel" style="display:none;">
+                <div class="form-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <h2>Step 3: Information & Questions Sought</h2>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">SUBJECT OF RTI APPLICATION *</label>
+                    <input type="text" id="rtiSubject" class="form-input" placeholder="e.g. Information regarding road repair tender and fund allocation for Ward 24" value="Seeking information regarding road repair and sewage pipeline maintenance funds allocated for Ward 24" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">SPECIFIC INFORMATION / QUESTIONS REQUIRED (Numbered) *</label>
+                    <textarea id="rtiQuestions" rows="5" class="form-input" placeholder="1. Please provide certified copy of tender awarded...&#10;2. Please specify total funds sanctioned and disbursed...&#10;3. Name and designation of the inspecting engineer...">1. Please provide certified copies of work orders and tender contracts awarded for road recarpeting in Ward 24 for the financial years 2024-2025.
+2. Please provide the certified copy of the inspection and quality compliance report signed by the junior engineer before clearing contractor bills.
+3. Please provide the daily action-taken report on grievance ticket #IMC-2024-892 filed by residents on the civic portal.</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">PERIOD FOR WHICH INFORMATION IS SOUGHT</label>
+                    <input type="text" id="rtiPeriod" class="form-input" placeholder="e.g. 1st April 2024 to 31st October 2024" value="1st January 2024 to 31st December 2024" />
+                </div>
+
+                <div class="form-actions" style="display:flex; justify-content:space-between; gap:12px;">
+                    <button type="button" style="border:1px solid var(--border-color); padding:0.8rem 1.4rem; border-radius:4px; font-weight:600; cursor:pointer;" onclick="goToStep(2)">← Back to Department</button>
+                    <button type="button" class="btn-continue" onclick="goToStep(4)">
+                        PREVIEW APPLICATION 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Live RTI Preview -->
+            <div id="wizardStep4" class="wizard-panel" style="display:none;">
+                <div class="form-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    </svg>
+                    <h2>Step 4: Formal RTI Application Preview</h2>
+                </div>
+
+                <div id="rtiPreviewArea" style="background:#FFFDF9; border:1px solid #D5CCC9; border-radius:4px; padding:2rem; font-family:'Times New Roman', serif; line-height:1.8; color:#1a1a1a; white-space:pre-wrap; font-size:0.95rem; margin-bottom:1.5rem; max-height:450px; overflow-y:auto;">
+                    <!-- Rendered by JS -->
+                </div>
+
+                <div class="form-actions" style="display:flex; justify-content:space-between; gap:12px;">
+                    <button type="button" style="border:1px solid var(--border-color); padding:0.8rem 1.4rem; border-radius:4px; font-weight:600; cursor:pointer;" onclick="goToStep(3)">← Edit Questions</button>
+                    <button type="button" class="btn-continue" onclick="goToStep(5)">
+                        PROCEED TO DOWNLOAD 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Download & Filing Guidance -->
+            <div id="wizardStep5" class="wizard-panel" style="display:none;">
+                <div class="form-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <h2>Step 5: Your RTI Application is Ready!</h2>
+                </div>
+
+                <p style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:0.95rem;">
+                    Download or copy your drafted RTI application ready for printing or online filing.
+                </p>
+
+                <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:2rem;">
+                    <button type="button" class="btn-continue" onclick="printRti()" style="background:var(--primary-accent); color:white;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                        PRINT / SAVE AS PDF
+                    </button>
+                    <button type="button" onclick="copyRtiText()" style="border:1.5px solid var(--primary-accent); color:var(--primary-accent); padding:0.85rem 1.5rem; border-radius:4px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        COPY FULL TEXT
+                    </button>
+                    <a href="https://rtionline.gov.in" target="_blank" rel="noopener noreferrer" style="border:1.5px solid #1976d2; color:#1976d2; padding:0.85rem 1.5rem; border-radius:4px; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:8px;">
+                        FILE ONLINE (rtionline.gov.in) ↗
+                    </a>
+                </div>
+
+                <div style="background:rgba(97,33,43,0.05); border-left:4px solid var(--primary-accent); padding:1.25rem; border-radius:4px; line-height:1.7; font-size:0.9rem;">
+                    <h3 style="color:var(--primary-accent); font-family:var(--font-heading); margin-bottom:0.5rem;">How to Submit Physically via Speed Post:</h3>
+                    <ol style="margin-left:1.25rem; color:var(--text-primary);">
+                        <li>Print out 2 copies of this application on A4 paper and sign in the applicant space.</li>
+                        <li>Attach the statutory application fee of ₹10 (via Indian Postal Order, Court Fee Stamp, or Demand Draft payable to the Accounts Officer of the public authority).</li>
+                        <li>Send by Registered Post / Speed Post to the PIO address. Retain the postal tracking receipt as proof of delivery.</li>
+                        <li>Under Section 7(1) of the RTI Act 2005, the public authority is mandated to supply the requested information within <strong>30 days</strong>.</li>
+                    </ol>
+                </div>
             </div>
         </div>
 
@@ -784,8 +943,8 @@
                 </svg>
             </div>
             <div class="pro-tip-content">
-                <h3>PRO TIP</h3>
-                <p>Ensure your postal address is correct as you will receive the response via physical mail.</p>
+                <h3 id="proTipTitle">PRO TIP</h3>
+                <p id="proTipDesc">Under Section 6(2) of the RTI Act 2005, an applicant is NOT required to give any reason for requesting the information.</p>
             </div>
         </div>
     </div>
@@ -850,19 +1009,225 @@
     </footer>
 
     <script>
+        let currentRtiStep = 1;
+
+        function showRtiNotice(msg) {
+            let toast = document.getElementById('rtiToastNotice');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'rtiToastNotice';
+                toast.style.cssText = 'position:fixed; bottom:85px; right:30px; background:#61212B; color:white; padding:12px 20px; border-radius:6px; box-shadow:0 6px 20px rgba(0,0,0,0.25); z-index:99999; font-weight:600; font-size:0.9rem; transition:opacity 0.3s; opacity:0; pointer-events:none;';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = msg;
+            toast.style.opacity = '1';
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 3500);
+        }
+
+        function goToStep(step) {
+            if (step < 1 || step > 5) return;
+            
+            // Validate step requirements if moving forward
+            if (step > currentRtiStep) {
+                if (currentRtiStep === 1) {
+                    const name = (document.getElementById('rtiName')?.value || '').trim();
+                    const addr = (document.getElementById('rtiAddress')?.value || '').trim();
+                    if (!name || !addr) {
+                        showRtiNotice('Please enter your full name and postal address before proceeding.');
+                        return;
+                    }
+                } else if (currentRtiStep === 2) {
+                    const dept = (document.getElementById('rtiDept')?.value || '').trim();
+                    if (!dept) {
+                        showRtiNotice('Please specify the department or public authority.');
+                        return;
+                    }
+                } else if (currentRtiStep === 3) {
+                    const q = (document.getElementById('rtiQuestions')?.value || '').trim();
+                    if (!q) {
+                        showRtiNotice('Please enter at least one question or information sought.');
+                        return;
+                    }
+                }
+            }
+
+            currentRtiStep = step;
+
+            // Toggle panels
+            for (let i = 1; i <= 5; i++) {
+                const panel = document.getElementById(`wizardStep${i}`);
+                const stepEl = document.getElementById(`progStep${i}`);
+                const lineEl = document.getElementById(`progLine${i}`);
+
+                if (panel) {
+                    panel.style.display = (i === step) ? 'block' : 'none';
+                }
+
+                if (stepEl) {
+                    if (i <= step) {
+                        stepEl.classList.add('active');
+                    } else {
+                        stepEl.classList.remove('active');
+                    }
+                }
+
+                if (lineEl) {
+                    if (i < step) {
+                        lineEl.classList.add('active');
+                    } else {
+                        lineEl.classList.remove('active');
+                    }
+                }
+            }
+
+            if (step === 4 || step === 5) {
+                generateRtiPreview();
+            }
+
+            // Scroll to top of card smoothly
+            const card = document.querySelector('.form-card');
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function generateRtiPreview() {
+            const today = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+            const name = (document.getElementById('rtiName')?.value || '').trim() || '[Applicant Full Name]';
+            const address = (document.getElementById('rtiAddress')?.value || '').trim() || '[Postal Address]';
+            const city = (document.getElementById('rtiCity')?.value || '').trim() || '[City]';
+            const pin = (document.getElementById('rtiPin')?.value || '').trim() || '[Pincode]';
+            const phone = (document.getElementById('rtiPhone')?.value || '').trim() || '[Phone Number]';
+            const email = (document.getElementById('rtiEmail')?.value || '').trim() || '[Email]';
+            
+            const govType = document.getElementById('rtiGovType')?.value || 'Central Government of India';
+            const dept = (document.getElementById('rtiDept')?.value || '').trim() || '[Department / Ministry Name]';
+            const pio = (document.getElementById('rtiPio')?.value || '').trim() || 'The Public Information Officer (PIO)';
+            
+            const subject = (document.getElementById('rtiSubject')?.value || '').trim() || 'Seeking information under Right to Information Act, 2005';
+            const questions = (document.getElementById('rtiQuestions')?.value || '').trim() || '1. Please provide details regarding the public matter.';
+            const period = (document.getElementById('rtiPeriod')?.value || '').trim() || 'Relevant financial year';
+
+            const text = `FORM 'A'
+[See Rule 3(1)]
+APPLICATION FOR SEEKING INFORMATION UNDER THE RIGHT TO INFORMATION ACT, 2005
+
+Dated: ${today}
+
+To,
+${pio}
+Department / Authority: ${dept}
+Jurisdiction: ${govType}
+
+SUBJECT: Application seeking information under Section 6(1) of the Right to Information Act, 2005.
+
+Sir / Madam,
+
+1. Full Name of Applicant:
+   ${name}
+
+2. Address for Correspondence:
+   ${address}
+   City / District: ${city} - ${pin}
+   Contact: ${phone} | Email: ${email}
+
+3. Citizenship:
+   I am a citizen of India and entitled to seek information under Section 3 of the Right to Information Act, 2005.
+
+4. Particulars of Information Required:
+   (a) Subject: ${subject}
+   (b) Relevant Period: ${period}
+   (c) Specific Information / Certified Copies Required:
+   
+${questions}
+
+5. Application Fee:
+   The statutory application fee of Rs. 10/- (Rupees Ten only) is attached herewith vide Indian Postal Order / Court Fee Stamp / Demand Draft / Online Payment. (In case of BPL cardholders, proof is attached).
+
+6. Mandatory Compliance under Section 7(1):
+   As per Section 7(1) of the RTI Act, 2005, you are requested to provide the requested information within 30 days of receipt of this application. If the requested information pertains to another public authority, kindly transfer this application within 5 days under Section 6(3) with intimation to the applicant.
+
+Thanking you,
+
+Yours sincerely,
+
+(Signature of Applicant)
+${name}`;
+
+            const previewArea = document.getElementById('rtiPreviewArea');
+            if (previewArea) {
+                previewArea.textContent = text;
+            }
+            return text;
+        }
+
+        function copyRtiText() {
+            const text = generateRtiPreview();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showRtiNotice('RTI Application copied to clipboard! Ready to paste into Word or email.');
+                }).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showRtiNotice('RTI Application copied to clipboard!');
+        }
+
+        function printRti() {
+            const text = generateRtiPreview();
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                alert('Popup blocker prevented print window. Please allow popups.');
+                return;
+            }
+            const safeText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            printWindow.document.write(`<!DOCTYPE html>
+<html>
+<head>
+    <title>RTI Application - Print View</title>
+    <style>
+        body { font-family: "Times New Roman", Times, serif; font-size: 13pt; line-height: 1.6; padding: 40px; color: #000; }
+        pre { white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: inherit; }
+    </style>
+</head>
+<body>
+    <pre>${safeText}</pre>
+    <script>
+        window.onload = function() { window.print(); }
+    <\/script>
+</body>
+</html>`);
+            printWindow.document.close();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize step 1
+            goToStep(1);
+
             // Language Toggle Smooth Functionality
             const langContainer = document.querySelector('.lang-toggle');
             if (langContainer) {
                 const langBtns = langContainer.querySelectorAll('button');
                 langBtns.forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        // Reset all to inactive
                         langBtns.forEach(b => {
                             b.classList.remove('active');
                             b.classList.add('inactive');
                         });
-                        // Set clicked to active
                         e.target.classList.remove('inactive');
                         e.target.classList.add('active');
                     });

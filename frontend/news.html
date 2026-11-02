@@ -1130,7 +1130,9 @@
         <div class="container">
             <div class="navbar-left">
                 <div class="logo-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" class="logo">
+                    <a href="index.html" title="NyayMitra Home">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" class="logo">
+                    </a>
                 </div>
                 
                 <div class="nav-links">
@@ -1138,25 +1140,26 @@
                     <a href="index.html">Guide</a>
                     <a href="directory.html">Directory</a>
                     <a href="news.html" class="active">News</a>
-                    <a href="#">RTI Generator</a>
-                    <a href="#">AI Analysis</a>
+                    <a href="rti.html">RTI Generator</a>
+                    <a href="explore.html#ai">AI Analysis</a>
+                    <a href="legal-notice.html">Legal Notice</a>
                 </div>
             </div>
 
             <div class="navbar-right">
                 <div class="nav-actions">
-                    <div class="lang-toggle">
-                        <button class="active">EN</button>
-                        <button class="inactive">हिं</button>
+                    <div class="lang-toggle" aria-label="Language Selector">
+                        <button class="active" data-lang="en">EN</button>
+                        <button class="inactive" data-lang="hi">हिं</button>
                     </div>
-                    <button class="btn-signin">SIGN IN</button>
-                    <button class="btn-emergency">
+                    <a href="signin.html" class="btn-signin">SIGN IN</a>
+                    <button class="btn-emergency" aria-label="Emergency Legal Help">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         EMERGENCY
                     </button>
                 </div>
 
-                <button class="btn-menu" id="mobileMenuBtn">
+                <button class="btn-menu" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nyayMenuDrawer">
                     <div class="hamburger-icon">
                         <span></span>
                         <span></span>
